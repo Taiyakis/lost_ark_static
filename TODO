@@ -1,3 +1,9 @@
-
-Todo:
-  ☐ Item
+Front-end:
+  ☐ Create clean angular project
+Back-end:
+  ☐ protected API by with Discord SSO
+  ☐ node + express js
+  ☐ implement some caching strategy
+Other:
+  ☐ Setup Render with ExpressJs API
+  ☐ Setup Angular project on Github
