@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    width: 100%;
+    background-color: rgb(78, 77, 77);
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-header {
+    justify-items: center;
+    display: flex;
+    width: 84%;
+    background-color: aquamarine;
+}
+
+.grid-header mat-grid-tile:nth-child(odd) {
+    background-color: rgb(105, 185, 29);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: black;
+    color: white;
+}

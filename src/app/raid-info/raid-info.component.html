@@ -1,0 +1,14 @@
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th *ngFor="let roster of rosters">{{ roster.mainCharacterName }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let raid of raids">
+            <td>{{ raid.name }}</td>
+            <td *ngFor="let value of raid.values">{{ value }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<div class="container">
+    <ng-container *ngFor="let item of rosters">
+        <div class="roster-header">
+            <h1>{{ item.mainCharacterName }}</h1>
+        </div>
+        <div class="roster">
+            <ng-container *ngFor="let character of getMainRoster(item.characters)" class="character">
+                <mat-grid-list cols="4" rowHeight="36px" class="character">
+                    <mat-grid-tile class="name" [colspan]="3" [rowspan]="1">
+                        {{ character.name }}
+                    </mat-grid-tile>
+                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="2">
+                        <img [src]=normalizeClassName(character.class) alt="">
+                    </mat-grid-tile>
+                    <mat-grid-tile class="level" [colspan]="1" [rowspan]="1">
+                        {{ character.ilvl }}
+                    </mat-grid-tile>
+                    <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
+                        {{ character.class }}
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>
