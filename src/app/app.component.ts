@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
       })
     ).subscribe({
       next: (data) => {
+        console.log('where si it', data);
         this.rostersData = data;
         this.status = 'success'
       },

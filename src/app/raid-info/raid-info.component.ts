@@ -1,17 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ApiResponse } from '../api-model';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { NgFor } from '@angular/common';
-
-interface TreeNode {
-  name: string;
-  value?: string;
-  children?: TreeNode[];
-}
+import { NgFor, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-raid-info',
-  imports: [MatGridListModule, NgFor],
+  imports: [MatGridListModule, NgFor, NgStyle],
   templateUrl: './raid-info.component.html',
   styleUrl: './raid-info.component.css'
 })
@@ -21,6 +15,7 @@ export class RaidInfoComponent implements OnInit {
   @Input()
   set rosters(value: ApiResponse[]) {
     this._rosters = value
+    this.updateTableInfo();
   } get rosters() {
     return this._rosters;
   }
@@ -32,11 +27,13 @@ export class RaidInfoComponent implements OnInit {
     { name: "Aegir NM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
   ];
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    console.log(this._rosters);
 
+  }
+
+  updateTableInfo() {
     for (let index = 0; index < this.rosters.length; index++) {
       // Get main 6 chars
       const mainRoster = this.rosters[index].characters.sort((a, b) => b.ilvl - a.ilvl).slice(0, 6)

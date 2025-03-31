@@ -1,14 +1,16 @@
-<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th *ngFor="let roster of rosters">{{ roster.mainCharacterName }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let raid of raids">
-            <td>{{ raid.name }}</td>
-            <td *ngFor="let value of raid.values">{{ value }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table [ngStyle]="{ 'display': rosters.length != 0 ? 'table' : 'none' }">
+        <thead>
+            <tr>
+                <th></th>
+                <th *ngFor="let roster of rosters">{{ roster.mainCharacterName }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let raid of raids">
+                <td>{{ raid.name }}</td>
+                <td *ngFor="let value of raid.values">{{ value }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
