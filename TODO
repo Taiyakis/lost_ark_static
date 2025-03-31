@@ -8,6 +8,8 @@ Stuff:
   
 Front-end:
   ✔ Create clean angular project @done(25-03-28 21:34)
+  ☐ Cache API response (for better feel of web (i will display old data at start before it fetches newest from API, might be one day old))
+
 Back-end:
   Map the responses:
     ✔ rosterInfo @done(25-03-30 16:57)
@@ -15,7 +17,6 @@ Back-end:
     ✔ Have Fake AUTH @done(25-03-30 16:58)
     ☐ personal progress tracking
   ✔ node + express js @done(25-03-28 22:51)
-  ☐ implement some caching strategy
 Other:
   ✔ Setup Render with ExpressJs API @done(25-03-28 22:51)
   ✔ Setup Angular project on Github @done(25-03-28 21:35)
