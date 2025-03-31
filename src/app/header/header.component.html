@@ -1,4 +1,7 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
     <span class="logo" routerLink="/">Weekly reclear</span>
-    <span class="spacer"></span>
+    <div class="status-container">
+        <h1>API Status</h1>
+        <span class="status" [ngStyle]="statusColor"></span> 
+    </div>
 </mat-toolbar>

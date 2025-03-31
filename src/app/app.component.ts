@@ -4,7 +4,7 @@ import { RosterComponent } from './roster/roster.component';
 import { RaidInfoComponent } from './raid-info/raid-info.component';
 import { ApiResponse } from './api-model';
 import { ApiService } from '../services/api.service';
-import { first } from 'rxjs';
+import { catchError, delay, first, retry, retryWhen, scan, throwError, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +15,36 @@ import { first } from 'rxjs';
 })
 
 export class AppComponent implements OnInit {
+  status = 'pending';
   rostersData: ApiResponse[] = [];
 
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.getRosters().pipe(first()).subscribe((data) => {
-      this.rostersData = data;
+    this.getRosters()
+  }
+
+  getRosters() {
+    this.api.getRosters().pipe(
+      retry({
+        count: 6,
+        delay: (_, retryCount) => {
+          console.warn(`Retry attempt #${retryCount} in 10s...`);
+          this.status = 'pending';
+          return timer(10000);
+        }
+      }),
+      catchError(error => {
+        return throwError(() => new Error('API request failed!'));
+      })
+    ).subscribe({
+      next: (data) => {
+        this.rostersData = data;
+        this.status = 'success'
+      },
+      error: (err) => {
+        this.status = 'error'
+      }
     })
   }
 }
