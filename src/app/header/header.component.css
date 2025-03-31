@@ -1,0 +1,30 @@
+mat-toolbar {
+    color: #ECDFC9;
+    background-color: #3A3E40;
+    justify-content: space-between
+}
+
+.logo {
+    font-size: 36px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.status-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.status {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+}
+
+.status h1 {
+    color: #312e2a;
+    font-size: 22px;
+    width: fit-content;
+    margin: auto;
+}
