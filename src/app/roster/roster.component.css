@@ -1,18 +1,24 @@
 .container {
-    display: flex;
-    width: 100%;
-    background-color: rgb(78, 77, 77);
-    flex-direction: column;
-    align-items: center;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.roster-container {
+    text-align: center;
 }
 
 .roster-header {
+    color: #ECDFC9;
     justify-content: center;
     display: flex;
     align-items: center;
-    background-color: rgb(105, 110, 110);
-    margin-top: 14px;
-    width: 84%;
+    background-color: #3A3E40;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .roster-header h1 {
@@ -20,43 +26,59 @@
 }
 
 .roster {
-    background-color: rgb(105, 110, 110);
+    background-color: #3A3E40;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    width: 84%;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
+    gap: 15px;
+    padding-bottom: 15px;
 }
 
 .character {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-radius: 16px;
     display: block;
-    background-color: rgb(125, 130, 110);
-    flex: 1 1 calc(31%);
-    margin: 1%;
+    background-color: #464B4B;
+    flex: 1 1 calc(50% - 30px);
+    box-shadow: -7px 6px 7px rgb(77 79 86 / 20%);
+}
+
+.character:nth-child(odd) {
+    margin-left: 15px;
+}
+
+.character:nth-child(even) {
+    margin-right: 15px;
 }
 
 .character .level {
+    color: #ECDFC9;
     border-bottom-left-radius: 16px;
-    background-color: rgb(115, 120, 110);
+    background-color: #464B4B;
     font-weight: 800;
 }
 
 .character .name {
+    color: #ECDFC9;
     border-top-left-radius: 16px;
     justify-content: flex-start;
-    font-size: 24px;
-    background-color: rgb(125, 130, 110);
+    font-size: 20px;
+    background-color: #464B4B;
+    font-weight: 600;
 }
 
 .character .class {
-    background-color: rgb(115, 120, 110);
+    font-size: 14px;
+    color: #c2b8a8;
+    background-color: #515757;
+    font-weight: 200;
 }
 
 .character .classImg {
     border-radius: 0 16px 16px 0;
-    background-color: rgb(125, 130, 110);
+    background-color: #515757;
 }
 
 .classImg img {
