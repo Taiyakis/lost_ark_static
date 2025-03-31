@@ -43,6 +43,7 @@
     background-color: #464B4B;
     flex: 1 1 calc(50% - 30px);
     box-shadow: -7px 6px 7px rgb(77 79 86 / 20%);
+    cursor: pointer;
 }
 
 .character:nth-child(odd) {

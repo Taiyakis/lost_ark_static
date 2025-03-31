@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiResponse, Character } from '../api-model';
 import { NgFor } from '@angular/common';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-roster',
@@ -32,5 +32,9 @@ export class RosterComponent implements OnInit {
 
   normalizeClassName(className: string) {
     return `${className}.png`
+  }
+
+  openCharacterInfo(characterName: string) {
+    window.open(`https://uwuowo.mathi.moe/character/CE/${characterName}`, '_blank');
   }
 }

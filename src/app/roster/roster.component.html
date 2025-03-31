@@ -5,12 +5,12 @@
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of getMainRoster(item.characters)" class="character">
-                <mat-grid-list cols="3" rowHeight="30px" class="character">
+                <mat-grid-list (click)="openCharacterInfo(character.name)" cols="3" rowHeight="30px" class="character">
                     <mat-grid-tile class="name" [colspan]="2" [rowspan]="1">
                         {{ character.name }}
                     </mat-grid-tile>
                     <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
-                        <img [src]=normalizeClassName(character.class) alt="">
+                        <img href="www.google.com" [src]=normalizeClassName(character.class) alt="">
                     </mat-grid-tile>
                     <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
                         {{ character.class }}

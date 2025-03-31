@@ -11,7 +11,6 @@ Front-end:
 Back-end:
   Map the responses:
     ✔ rosterInfo @done(25-03-30 16:57)
-    ✘ CharInfo @cancelled(25-03-30 16:57) no need everything is in rosterInfo
   ☐ protected API by with Discord SSO:
     ✔ Have Fake AUTH @done(25-03-30 16:58)
     ☐ personal progress tracking
