@@ -5,10 +5,11 @@ import { RaidInfoComponent } from './raid-info/raid-info.component';
 import { ApiResponse } from './api-model';
 import { ApiService } from '../services/api.service';
 import { catchError, delay, first, retry, retryWhen, scan, throwError, timer } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RosterComponent, RaidInfoComponent],
+  imports: [HeaderComponent, RosterComponent, RaidInfoComponent, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [ApiService]

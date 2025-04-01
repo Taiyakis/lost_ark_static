@@ -1,3 +1,8 @@
 <app-header [statusIndicator]="status"></app-header>
+
+<div *ngIf="status != 'success'" class="gif-container">
+    <img src="Taiyakis_Api.gif">
+</div>
+
 <app-raid-info [rosters]="rostersData"></app-raid-info>
 <app-roster [rosters]="rostersData"></app-roster>
