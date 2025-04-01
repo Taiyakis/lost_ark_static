@@ -10,7 +10,7 @@
                         {{ character.name }}
                     </mat-grid-tile>
                     <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
-                        <img href="www.google.com" [src]=normalizeClassName(character.class) alt="">
+                        <img [src]=normalizeClassName(character.class) alt="">
                     </mat-grid-tile>
                     <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
                         {{ character.class }}

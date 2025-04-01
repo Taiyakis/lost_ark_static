@@ -15,6 +15,12 @@ mat-toolbar {
     align-items: center;
 }
 
+.status-container h1 {
+    font-size: 22px;
+    width: fit-content;
+    margin: auto;
+}
+
 .status {
     display: flex;
     height: 32px;
@@ -22,9 +28,12 @@ mat-toolbar {
     border-radius: 16px;
 }
 
-.status h1 {
-    color: #312e2a;
-    font-size: 22px;
-    width: fit-content;
-    margin: auto;
+@media (max-width: 768px) {
+    .logo {
+        font-size: 24px;
+    }
+
+    .status-container h1 {
+        font-size: 14px;
+    }
 }
