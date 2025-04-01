@@ -7,7 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
   selector: 'app-roster',
   imports: [NgFor, MatGridListModule],
   templateUrl: './roster.component.html',
-  styleUrl: './roster.component.css'
+  styleUrl: './roster.component.css',
 })
 export class RosterComponent implements OnInit {
   private _roster!: ApiResponse[];

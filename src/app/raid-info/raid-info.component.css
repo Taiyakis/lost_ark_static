@@ -1,9 +1,7 @@
 .container {
-    margin: 20px 0;
+    margin: 20px auto;
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
+    width: 1350px;
 }
 
 table {
@@ -17,13 +15,61 @@ td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
-    background-color: #464B4B;
     color: #ECDFC9;
     font-size: 20px;
 }
 
 th {
-    width: 150px;
     background-color: #3A3E40;
     color: #ECDFC9;
+}
+
+tr:nth-child(odd) {
+    background-color: #464B4B;
+}
+
+tr:nth-child(even) {
+    background-color: #595f5f;
+}
+
+@media (max-width: 1080px) {
+    .container {
+        width: 1000px;
+    }
+
+    table {
+        overflow: scroll;
+    }
+
+    th,
+    td {
+        width: 100px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 650px;
+        overflow-x: scroll;
+    }
+
+    th,
+    td {
+        width: 100px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 430px) {
+    .container {
+        width: 400px;
+        overflow-x: scroll;
+    }
+
+    th,
+    td {
+        width: 100px;
+        font-size: 16px;
+    }
 }
