@@ -1,10 +1,18 @@
 FE: https://taiyakis.github.io/lost_ark_static/
 API: https://lostark-roster-api.onrender.com/getroster
 
+FE: https://taiyaki.fun/
+API: https://api.taiyaki.fun/
+
 Stuff:
-  ✔ ng build --output-path=dist --base-href="lost_ark_static/"
-  ✔ Manually update index.html file base href="/repo_name/" @done(25-03-28 21:35)
-  ✔ ngh --dir=dist/browser
+  
+  Hostinger:
+    ✔ ng build --output-path=dist --base-href="/"
+
+  Github-pages:
+    ✔ ng build --output-path=dist --base-href="lost_ark_static/"
+    ✔ Manually update index.html file base href="/repo_name/" @done(25-03-28 21:35)
+    ✔ ngh --dir=dist/browser
   
 Front-end:
   ✔ Create clean angular project @done(25-03-28 21:34)
