@@ -7,10 +7,10 @@ API: https://api.taiyaki.fun/
 Stuff:
   
   Hostinger:
-    ✔ ng build --output-path=dist --base-href="/"
+    ✔ ng build --output-path=dist --base-href="'/'"
 
   Github-pages:
-    ✔ ng build --output-path=dist --base-href="lost_ark_static/"
+    ✔ ng build --output-path=dist --base-href="'/lost_ark_static/'"
     ✔ Manually update index.html file base href="/repo_name/" @done(25-03-28 21:35)
     ✔ ngh --dir=dist/browser
   
