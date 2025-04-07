@@ -1,6 +1,37 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    color: #ECDFC9;
+    font-size: 10px
+}
+
+.not-found-container img {
+    width: 50%;
+    margin: auto;
+}
+
+.not-found-container p {
+    font-size: 24px;
+    margin: auto;
+    margin-bottom: 6px;
+}
+
 .gif-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 40px 0;
+}
+
+.spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    --mat-sys-primary: #eba563;
+}
+
+.gif-container img {
+    display: block;
 }

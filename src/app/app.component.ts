@@ -4,19 +4,28 @@ import { RosterComponent } from './roster/roster.component';
 import { RaidInfoComponent } from './raid-info/raid-info.component';
 import { ApiResponse } from './api-model';
 import { ApiService } from '../services/api.service';
-import { catchError, delay, first, retry, retryWhen, scan, throwError, timer } from 'rxjs';
+import { catchError, retry, throwError, timer } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { ProgressSpinnerMode, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RosterComponent, RaidInfoComponent, NgIf],
+  imports: [HeaderComponent, RosterComponent, RaidInfoComponent, NgIf, MatProgressSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [ApiService]
 })
 
 export class AppComponent implements OnInit {
+  // Spinner mode
+  mode: ProgressSpinnerMode = 'indeterminate';
+
+  // Api status
   status = 'pending';
+  isLoading = false;
+  apiRetryCount = 6;
+
+  // Api response
   rostersData: ApiResponse[] = [];
 
   constructor(private api: ApiService) { }
@@ -28,11 +37,11 @@ export class AppComponent implements OnInit {
   getRosters() {
     this.api.getRosters().pipe(
       retry({
-        count: 6,
+        count: this.apiRetryCount,
         delay: (_, retryCount) => {
-          console.warn(`Retry attempt #${retryCount} in 10s...`);
-          this.status = 'pending';
-          return timer(10000);
+          console.warn(`Retry attempt #${retryCount} in 5s...`);
+          this.setStatus('pending', true)
+          return timer(5000);
         }
       }),
       catchError(error => {
@@ -42,11 +51,16 @@ export class AppComponent implements OnInit {
       next: (data) => {
         console.log('where si it', data);
         this.rostersData = data;
-        this.status = 'success'
+        this.setStatus('success', false)
       },
       error: (err) => {
-        this.status = 'error'
+        this.setStatus('error', true)
       }
     })
+  }
+
+  setStatus(status: string, isLoading: boolean) {
+    this.status = status;
+    this.isLoading = isLoading;
   }
 }
