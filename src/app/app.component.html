@@ -1,7 +1,14 @@
 <app-header [statusIndicator]="status"></app-header>
 
-<div *ngIf="status != 'success'" class="gif-container">
+<div *ngIf="status == 'pending' && isLoading" class="gif-container">
+    <mat-progress-spinner class="spinner" [mode]="mode">
+    </mat-progress-spinner>
     <img src="Taiyakis_Api.gif">
+</div>
+
+<div *ngIf="status == 'error'" class="not-found-container">
+    <p>API is deadge, sry</p>
+    <img src="Deadge.png">
 </div>
 
 <app-raid-info [rosters]="rostersData"></app-raid-info>

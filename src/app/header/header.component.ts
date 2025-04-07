@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
@@ -9,8 +9,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+
+  @ViewChild('progressFill') progressBar!: ElementRef;
+
   statusName = '';
-  statusColor = {}
+  statusColor = {};
+  isLoading = true;
 
   @Input() set statusIndicator(value: string) {
     this.setStatus(value);
