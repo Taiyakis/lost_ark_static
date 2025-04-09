@@ -1,22 +1,22 @@
 <div class="container">
-    <div class="roster-container" *ngFor="let item of rosters">
+    <div class="roster-container" *ngFor="let name of rosterNames">
         <div class="roster-header">
-            <h1>{{ item.mainCharacterName }}</h1>
+            <h1>{{ name }}</h1>
         </div>
         <div class="roster">
-            <ng-container *ngFor="let character of getMainRoster(item.characters)" class="character">
-                <mat-grid-list (click)="openCharacterInfo(character.name)" cols="3" rowHeight="30px" class="character">
+            <ng-container *ngFor="let character of groupedData[name]" class="character">
+                <mat-grid-list (click)="openCharacterInfo(character.CharacterName)" cols="3" rowHeight="30px" class="character">
                     <mat-grid-tile class="name" [colspan]="2" [rowspan]="1">
-                        {{ character.name }}
+                        {{ character.CharacterName }}
                     </mat-grid-tile>
                     <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
-                        <img [src]=normalizeClassName(character.class) alt="">
+                        <img [src]=displayClassImg(character.ClassName) alt="">
                     </mat-grid-tile>
                     <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
-                        {{ character.class }}
+                        {{ character.ClassName }}
                     </mat-grid-tile>
                     <mat-grid-tile class="level" [colspan]="2" [rowspan]="1">
-                        {{ character.ilvl }}
+                        {{ character.Level }}
                     </mat-grid-tile>
                 </mat-grid-list>
             </ng-container>

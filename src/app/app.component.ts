@@ -48,8 +48,7 @@ export class AppComponent implements OnInit {
         return throwError(() => new Error('API request failed!'));
       })
     ).subscribe({
-      next: (data) => {
-        console.log('where si it', data);
+      next: (data: ApiResponse[]) => {
         this.rostersData = data;
         this.setStatus('success', false)
       },

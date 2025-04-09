@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiResponse, Character } from '../api-model';
+import { ApiResponse } from '../api-model';
 import { NgFor } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { Dictionary, groupBy } from 'lodash';
 
 @Component({
   selector: 'app-roster',
@@ -10,27 +11,28 @@ import { MatGridListModule } from '@angular/material/grid-list';
   styleUrl: './roster.component.css',
 })
 export class RosterComponent implements OnInit {
-  private _roster!: ApiResponse[];
+
   @Input()
   set rosters(value: ApiResponse[]) {
-    this._roster = value
-  } get rosters() {
-    return this._roster;
+    this.groupByRosterName(value)
   }
+
+  rosterNames: string[] = []
+  groupedData: Dictionary<ApiResponse[]> = {}
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this._roster);
+  ngOnInit(): void { }
+
+  groupByRosterName(value: ApiResponse[]) {
+    this.groupedData = groupBy(value, 'RosterName')
+    this.rosterNames = Object.keys(this.groupedData)
+
+    console.log('rosterNames', this.rosterNames)
+    console.log('groupedData', this.groupedData)
   }
 
-  // Return 6 highest characters a.k.a. Main rostger
-  getMainRoster(data: Character[]) {
-    const mainRoster = data.sort((a, b) => b.ilvl - a.ilvl).slice(0, 6)
-    return mainRoster;
-  }
-
-  normalizeClassName(className: string) {
+  displayClassImg(className: string) {
     return `${className}.png`
   }
 

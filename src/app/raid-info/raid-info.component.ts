@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiResponse } from '../api-model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgFor, NgStyle } from '@angular/common';
+import { groupBy } from 'lodash';
 
 @Component({
   selector: 'app-raid-info',
@@ -11,15 +12,12 @@ import { NgFor, NgStyle } from '@angular/common';
 })
 
 export class RaidInfoComponent implements OnInit {
-  private _rosters!: ApiResponse[];
   @Input()
   set rosters(value: ApiResponse[]) {
-    this._rosters = value
-    this.updateTableInfo();
-  } get rosters() {
-    return this._rosters;
+    this.groupByRoster(value);
   }
 
+  groupedByRoster: string[] = [];
   raids = [
     { name: "Brel HM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
     { name: "Brel NM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
@@ -27,20 +25,23 @@ export class RaidInfoComponent implements OnInit {
     { name: "Aegir NM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
   ];
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit(): void {
 
   }
 
-  updateTableInfo() {
-    for (let index = 0; index < this.rosters.length; index++) {
-      // Get main 6 chars
-      const mainRoster = this.rosters[index].characters.sort((a, b) => b.ilvl - a.ilvl).slice(0, 6)
-      mainRoster.forEach(character => {
-        this.updateBrelRunCount(index, character.ilvl)
-        this.updateAegirRunCount(index, character.ilvl)
-      });
+  groupByRoster(value: ApiResponse[]) {
+    const groupByRosterName = groupBy(value, 'RosterName')
+    this.groupedByRoster = Object.keys(groupByRosterName)
+
+    for (let i = 0; i < this.groupedByRoster.length; i++) {
+      const rosterName = this.groupedByRoster[i];
+      for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
+        const char = groupByRosterName[rosterName][k];
+        this.updateBrelRunCount(i, char.Level)
+        this.updateAegirRunCount(i, char.Level)
+      }
     }
   }
 

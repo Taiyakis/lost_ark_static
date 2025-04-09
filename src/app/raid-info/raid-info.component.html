@@ -1,9 +1,9 @@
 <div class="container">
-    <table [ngStyle]="{ 'display': rosters.length != 0 ? 'table' : 'none' }">
+    <table [ngStyle]="{ 'display': groupedByRoster.length != 0 ? 'table' : 'none' }">
         <thead>
             <tr>
                 <th></th>
-                <th *ngFor="let roster of rosters">{{ roster.mainCharacterName }}</th>
+                <th *ngFor="let roster of groupedByRoster">{{ roster }}</th>
             </tr>
         </thead>
         <tbody>
