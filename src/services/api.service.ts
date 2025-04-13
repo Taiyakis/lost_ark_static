@@ -13,4 +13,8 @@ export class ApiService {
   getRosters(): Observable<any> {
     return this.http.get(environment.apiUrl + '/getRoster');
   }
+
+  getHistory(): Observable<any> {
+    return this.http.get(environment.apiUrl + '/getHistory');
+  }
 }
