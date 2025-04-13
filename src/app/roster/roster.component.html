@@ -1,3 +1,41 @@
+<div class="event-container">
+    <div class="event-header-containter" [ngStyle]="{ 'display': charactersHistory.length != 0 ? 'flex' : 'none' }">
+        <img src="ArtistCaught.png" alt="">
+        <div class="event-header"><span>Sneaky Honers</span></div>
+        <img src="ArtistCaught.png" alt="">
+    </div>
+    <ng-container *ngFor="let character of charactersHistory">
+        <div class="event">
+            <div class="name-container"><a href="#{{character.CharacterName}}"><span>{{ character.CharacterName }}</span></a></div>
+            <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
+        </div>
+    </ng-container>
+    <ng-container *ngFor="let character of charactersHistory">
+        <div class="event">
+            <div class="name-container"><span>{{ character.CharacterName }}</span></div>
+            <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
+        </div>
+    </ng-container>
+    <ng-container *ngFor="let character of charactersHistory">
+        <div class="event">
+            <div class="name-container"><span>{{ character.CharacterName }}</span></div>
+            <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
+        </div>
+    </ng-container>
+    <ng-container *ngFor="let character of charactersHistory">
+        <div class="event">
+            <div class="name-container"><span>{{ character.CharacterName }}</span></div>
+            <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
+        </div>
+    </ng-container>
+    <ng-container *ngFor="let character of charactersHistory">
+        <div class="event">
+            <div class="name-container"><span>{{ character.CharacterName }}</span></div>
+            <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
+        </div>
+    </ng-container>
+</div>
+
 <div class="container">
     <div class="roster-container" *ngFor="let name of rosterNames">
         <div class="roster-header">
@@ -5,8 +43,9 @@
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of groupedData[name]" class="character">
-                <mat-grid-list (click)="openCharacterInfo(character.CharacterName)" cols="3" rowHeight="30px" class="character">
-                    <mat-grid-tile class="name" [colspan]="2" [rowspan]="1">
+                <mat-grid-list (click)="openCharacterInfo(character.CharacterName)" cols="3" rowHeight="30px"
+                    class="character">
+                    <mat-grid-tile [id]="character.CharacterName" class="name" [colspan]="2" [rowspan]="1">
                         {{ character.CharacterName }}
                     </mat-grid-tile>
                     <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
@@ -16,7 +55,8 @@
                         {{ character.ClassName }}
                     </mat-grid-tile>
                     <mat-grid-tile class="level" [colspan]="2" [rowspan]="1">
-                        {{ character.Level }}
+                        {{ character.Level }}<span [class.levelChanges]="isCharacterChanged(character.CharacterName)">{{
+                            getLevelChanges(character.CharacterName, true, character.Level) }}</span>
                     </mat-grid-tile>
                 </mat-grid-list>
             </ng-container>

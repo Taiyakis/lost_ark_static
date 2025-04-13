@@ -1,5 +1,10 @@
+a {
+    all: unset;
+}
+
 .container {
     padding-top: 20px;
+    padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -86,8 +91,95 @@
     width: 50px;
 }
 
+.levelChanges {
+    background-color: rgb(67 109 3);
+    margin: 4px;
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
+}
+
+.event-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1200px;
+}
+
+.event-container .event-header-containter {
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 6px
+}
+
+.event-container .event-header-containter span {
+    background-color: #3A3E40;
+    font-size: 20px;
+    color: #ECDFC9;
+    margin: auto;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.event-container .event-header-containter img {
+    height: 64px;
+    margin-top: -32px;
+}
+
+.event {
+    display: flex;
+    height: 32px;
+    margin: 4px 6px;
+}
+
+.event .name-container {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    background-color: #515757;
+    border-radius: 8px 0 0 8px;
+}
+
+.event .name-container:hover {
+    cursor: pointer;
+}
+
+.event .name-container span {
+    font-size: 20px;
+    color: #ECDFC9;
+    font-weight: 600;
+    padding: 0 4px 0 8px;
+}
+
+.event .level-container {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    background-color: rgb(67 109 3);
+    border-radius: 0 8px 8px 0;
+}
+
+.event .level-container span {
+    color: #ECDFC9;
+    font-size: 14px;
+    text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
+    padding: 0 8px 0 4px;
+}
+
 /* Vertical monitor */
 @media (max-width: 1080px) {
+    .event-container {
+        max-width: 1000px;
+    }
+
     .container {
         padding-top: 20px;
         display: grid;
@@ -100,6 +192,10 @@
 
 /* Phone */
 @media (max-width: 768px) {
+    .event-container {
+        max-width: 600px;
+    }
+
     .container {
         padding-top: 20px;
         display: grid;
@@ -111,6 +207,10 @@
 }
 
 @media (max-width: 430px) {
+    .event-container {
+        max-width: 400px;
+    }
+
     .container {
         padding-top: 20px;
         display: grid;
@@ -134,6 +234,10 @@
 }
 
 @media (max-width: 360px) {
+    .event-container {
+        max-width: 330px;
+    }
+
     .container {
         padding-top: 20px;
         display: grid;

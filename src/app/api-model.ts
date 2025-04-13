@@ -4,3 +4,8 @@ export interface ApiResponse {
     ClassName: string,
     Level: number
 }
+
+export interface HistoryResponse {
+    CharacterName: string,
+    Level: number
+}
