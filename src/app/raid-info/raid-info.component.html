@@ -9,7 +9,20 @@
         <tbody>
             <tr *ngFor="let raid of raids">
                 <td>{{ raid.name }}</td>
-                <td *ngFor="let value of raid.values">{{ value }}</td>
+                <td *ngFor="let value of raid.values">
+                    <div class="role-container">
+                        <span class="dps circle tooltip" [ngClass]="{hide: value.dps == 0}">{{ value.dps }}
+                            <span class="tooltiptext">
+                                <span *ngFor="let names of value.dpsNames">{{names}}</span>
+                            </span>
+                        </span>
+                        <span class="supp circle tooltip" [ngClass]="{hide: value.supp == 0}">{{ value.supp }}
+                            <span class="tooltiptext">
+                                <span *ngFor="let names of value.suppNames">{{names}}</span>
+                            </span>
+                        </span>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
