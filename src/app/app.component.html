@@ -12,4 +12,10 @@
 </div>
 
 <app-raid-info [rosters]="rostersData"></app-raid-info>
-<app-roster [rosters]="rostersData"></app-roster>
+<app-roster id="goTop" [rosters]="rostersData"></app-roster>
+
+<a href="#goTop" *ngIf="showTopButton">
+    <button mat-icon-button class="go-to-top">
+        <mat-icon>arrow_upward</mat-icon>
+    </button>
+</a>
