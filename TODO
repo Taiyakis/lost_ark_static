@@ -17,7 +17,9 @@ Stuff:
 Front-end:
   ✔ Create clean angular project @done(25-03-28 21:34)
   ☐ Cache API response (for better feel of web (i will display old data at start before it fetches newest from API, might be one day old))
-  ☐ Responsive web 3 modes, 21:9, 9:21, Phone
+  ✔ Responsive web 3 modes, 21:9, 9:21, Phone @done(25-04-14 21:29)
+  ☐ Optimaze imgs
+    ☐ Convert img to svg
 
 Back-end:
   Map the responses:

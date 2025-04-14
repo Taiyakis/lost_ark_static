@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiResponse } from '../api-model';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { groupBy } from 'lodash';
 
 @Component({
   selector: 'app-raid-info',
-  imports: [MatGridListModule, NgFor, NgStyle],
+  imports: [MatGridListModule, NgFor, NgStyle, NgClass],
   templateUrl: './raid-info.component.html',
   styleUrl: './raid-info.component.css'
 })
@@ -19,10 +19,22 @@ export class RaidInfoComponent implements OnInit {
 
   groupedByRoster: string[] = [];
   raids = [
-    { name: "Brel HM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
-    { name: "Brel NM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
-    { name: "Aegir HM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
-    { name: "Aegir NM", values: [0, 0, 0, 0, 0, 0, 0, 0] },
+    {
+      name: "Brel HM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Brel NM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Aegir HM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Aegir NM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
   ];
 
   constructor() { }
@@ -39,39 +51,60 @@ export class RaidInfoComponent implements OnInit {
       const rosterName = this.groupedByRoster[i];
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
-        this.updateBrelRunCount(i, char.Level)
-        this.updateAegirRunCount(i, char.Level)
+        this.updateBrelRunCount(i, char)
+        this.updateAegirRunCount(i, char)
       }
     }
   }
 
-  updateBrelRunCount(indexToUpdate: number, ilvl: number) {
+  updateBrelRunCount(indexToUpdate: number, char: ApiResponse) {
     switch (true) {
-      case ilvl >= 1690:
+      case char.Level >= 1690:
         // HM
-        this.raids[0].values[indexToUpdate] += 1;
+        this.increamentRoleByClassName(0, indexToUpdate, char)
         break;
-      case ilvl >= 1670:
+      case char.Level >= 1670:
         // NM
-        this.raids[1].values[indexToUpdate] += 1;
+        this.increamentRoleByClassName(1, indexToUpdate, char)
         break;
       default:
         break;
     }
   }
 
-  updateAegirRunCount(indexToUpdate: number, ilvl: number) {
+  updateAegirRunCount(indexToUpdate: number, char: ApiResponse) {
     switch (true) {
-      case ilvl >= 1680:
+      case char.Level >= 1680:
         // HM
-        this.raids[2].values[indexToUpdate] += 1;
+        this.increamentRoleByClassName(2, indexToUpdate, char)
         break;
-      case ilvl >= 1660:
+      case char.Level >= 1660:
         // NM
-        this.raids[3].values[indexToUpdate] += 1;
+        this.increamentRoleByClassName(3, indexToUpdate, char)
         break;
       default:
         break;
     }
+  }
+
+  /**
+   * Increament dps or supp for specific raid
+   * 0 - Brel HM
+   * 1 - Brel NM
+   * 2 - Aegir HM
+   * 3 - Aegir NM
+   */
+  increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
+    if (this.isSupport(char.ClassName)) {
+      this.raids[raidIndex].values[indexToUpdate].supp += 1
+      this.raids[raidIndex].values[indexToUpdate].suppNames.push(char.CharacterName)
+    } else {
+      this.raids[raidIndex].values[indexToUpdate].dps += 1
+      this.raids[raidIndex].values[indexToUpdate].dpsNames.push(char.CharacterName)
+    }
+  }
+
+  isSupport(className: string): boolean {
+    return (['Bard', 'Paladin', 'Artist'].indexOf(className) >= 0)
   }
 }
