@@ -109,7 +109,7 @@ export class RosterComponent implements OnInit {
       this.renderer.addClass(el, 'highlight');
       setTimeout(() => {
         this.renderer.removeClass(el, 'highlight');
-      }, 5000);
+      }, 4000);
     }
   }
 }

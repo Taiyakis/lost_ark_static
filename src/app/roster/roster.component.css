@@ -231,7 +231,7 @@ a {
 }
 
 .highlight {
-    animation: blinkHighlight 1s ease-in-out 5;
+    animation: blinkHighlight 1s ease-in-out 4;
 }
 
 /* Vertical monitor */
