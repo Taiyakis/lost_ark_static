@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiResponse, HistoryResponse } from '../api-model';
-import { NgFor, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Dictionary, find, groupBy, isEmpty } from 'lodash';
 import { ApiService } from '../../services/api.service';
@@ -8,7 +8,7 @@ import { catchError, retry, throwError, timer } from 'rxjs';
 
 @Component({
   selector: 'app-roster',
-  imports: [NgFor, MatGridListModule, NgStyle],
+  imports: [NgFor, MatGridListModule, NgStyle, NgClass],
   templateUrl: './roster.component.html',
   styleUrl: './roster.component.css',
 })
@@ -27,6 +27,8 @@ export class RosterComponent implements OnInit {
   groupedData: Dictionary<ApiResponse[]> = {}
   charactersHistory: HistoryResponse[] = [];
   plainRosterData: ApiResponse[] = [];
+  filteredHistory: HistoryResponse[] = [];
+  currentFilter: string = 'week';
 
   constructor(private api: ApiService) { }
 
@@ -64,6 +66,7 @@ export class RosterComponent implements OnInit {
     ).subscribe({
       next: (data: HistoryResponse[]) => {
         this.charactersHistory = data;
+        this.applyFilter('weekly');
       },
       error: (err) => {
       }
@@ -89,5 +92,14 @@ export class RosterComponent implements OnInit {
 
     const levelIncreasedBy = (currentLevel! - char.Level).toFixed(2)
     return `+${levelIncreasedBy}`;
+  }
+
+  onFilterChange(filterType: string) {
+    this.currentFilter = filterType;
+    this.applyFilter(filterType);
+  }
+
+  private applyFilter(filterType: string) {
+    this.filteredHistory = this.charactersHistory.filter(data => (data.FilterType == filterType));
   }
 }

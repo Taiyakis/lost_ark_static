@@ -1,12 +1,23 @@
 <div class="event-container">
     <div class="event-header-containter" [ngStyle]="{ 'display': charactersHistory.length != 0 ? 'flex' : 'none' }">
         <img src="ArtistCaught.png" alt="">
-        <div class="event-header"><span>Sneaky Honers</span></div>
+        <div class="event-header">
+            <div class="event-header-text-containter">
+                <span class="event-header-text">Sneaky Honers</span>
+            </div>
+            <div class="event-header-filter-containter">
+                <span class="event-header-filter" (click)="onFilterChange('day')"
+                    [ngClass]="{ 'active-button': 'day' == currentFilter }">Day</span>
+                <span class="event-header-filter" (click)="onFilterChange('weekly')"
+                    [ngClass]="{ 'active-button': 'weekly' == currentFilter }">Week</span>
+            </div>
+        </div>
         <img src="ArtistCaught.png" alt="">
     </div>
-    <ng-container *ngFor="let character of charactersHistory">
+    <ng-container *ngFor="let character of filteredHistory">
         <div class="event">
-            <div class="name-container"><a href="#{{character.CharacterName}}"><span>{{ character.CharacterName }}</span></a></div>
+            <div class="name-container"><a href="#{{character.CharacterName}}"><span>{{ character.CharacterName
+                        }}</span></a></div>
             <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
         </div>
     </ng-container>

@@ -6,6 +6,7 @@ export interface ApiResponse {
 }
 
 export interface HistoryResponse {
+    FilterType: string,
     CharacterName: string,
     Level: number
 }
