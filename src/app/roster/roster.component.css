@@ -216,6 +216,24 @@ a {
     background-color: rgb(67 109 3) !important;
 }
 
+@keyframes blinkHighlight {
+    0% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: rgb(67 109 3);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+.highlight {
+    animation: blinkHighlight 1s ease-in-out 5;
+}
+
 /* Vertical monitor */
 @media (max-width: 1080px) {
     .event-container {

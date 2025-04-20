@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { ApiResponse, HistoryResponse } from '../api-model';
 import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -30,7 +30,7 @@ export class RosterComponent implements OnInit {
   filteredHistory: HistoryResponse[] = [];
   currentFilter: string = 'weekly';
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private renderer: Renderer2) { }
 
   ngOnInit(): void { }
 
@@ -101,5 +101,15 @@ export class RosterComponent implements OnInit {
 
   private applyFilter(filterType: string) {
     this.filteredHistory = this.charactersHistory.filter(data => (data.FilterType == filterType));
+  }
+
+  addHighlightClass(characterName: string) {
+    const el = document.getElementById(characterName);
+    if (el) {
+      this.renderer.addClass(el, 'highlight');
+      setTimeout(() => {
+        this.renderer.removeClass(el, 'highlight');
+      }, 5000);
+    }
   }
 }

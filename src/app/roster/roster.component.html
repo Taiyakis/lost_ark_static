@@ -16,7 +16,7 @@
     </div>
     <ng-container *ngFor="let character of filteredHistory">
         <div class="event">
-            <div class="name-container"><a href="#{{character.CharacterName}}"><span>{{ character.CharacterName
+            <div class="name-container"><a href="#{{character.CharacterName}}" (click)="addHighlightClass(character.CharacterName)"><span>{{ character.CharacterName
                         }}</span></a></div>
             <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
         </div>
