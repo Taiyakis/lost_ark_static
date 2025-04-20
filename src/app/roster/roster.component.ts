@@ -28,7 +28,7 @@ export class RosterComponent implements OnInit {
   charactersHistory: HistoryResponse[] = [];
   plainRosterData: ApiResponse[] = [];
   filteredHistory: HistoryResponse[] = [];
-  currentFilter: string = 'week';
+  currentFilter: string = 'weekly';
 
   constructor(private api: ApiService) { }
 
