@@ -18,13 +18,17 @@ a {
 }
 
 .roster-header {
-    color: #ECDFC9;
-    justify-content: center;
+    position: relative;
     display: flex;
     align-items: center;
-    background-color: #3A3E40;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+    justify-content: center;
+    background-color: #3A3E40; /* fallback */
+    color: #ECDFC9;
+    min-height: 170px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
 }
 
 .roster-header h1 {
@@ -40,6 +44,9 @@ a {
     border-bottom-right-radius: 16px;
     gap: 15px;
     padding-bottom: 15px;
+    padding-top: 6px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .character {

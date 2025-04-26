@@ -50,7 +50,6 @@ tr:nth-child(even) {
     width: 15px;
     height: 15px;
     padding: 7.5px;
-    margin: -7.5px;
     border-radius: 17px;
     text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
     display: flex;
