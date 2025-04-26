@@ -96,7 +96,7 @@ export class RosterComponent implements OnInit {
     if (isEmpty(this.charactersHistory))
       return null;
 
-    const char = find(this.charactersHistory, { 'CharacterName': characterName })
+    const char = find(this.charactersHistory, { 'CharacterName': characterName, 'FilterType': this.currentFilter })
     if (isEmpty(char))
       return null;
 
