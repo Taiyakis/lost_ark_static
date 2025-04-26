@@ -30,6 +30,18 @@ export class RosterComponent implements OnInit {
   filteredHistory: HistoryResponse[] = [];
   currentFilter: string = 'weekly';
 
+  // Banner img src
+  banner: any = {
+    Madeline: 'https://cdn.discordapp.com/banners/151149364956495873/a_b98d82cf670b30b3e16c45132dd62cba.gif?size=480',
+    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.gif?size=480',
+    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.gif?size=480',
+    Compleo: '',
+    Magnatas: '',
+    Siose: '',
+    Taiyakis: 'https://cdn.discordapp.com/banners/160900248602935296/8772f8263af5af126c62734b23de437d.png?size=480',
+    Deadlybrother: ''
+  }
+
   constructor(private api: ApiService, private renderer: Renderer2) { }
 
   ngOnInit(): void { }

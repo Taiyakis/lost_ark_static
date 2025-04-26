@@ -25,7 +25,7 @@
 
 <div class="container">
     <div class="roster-container" *ngFor="let name of rosterNames">
-        <div class="roster-header">
+        <div class="roster-header" [ngStyle]="{ 'background-image': 'url(' + banner[name] + ')' }">
             <h1>{{ name }}</h1>
         </div>
         <div class="roster">
