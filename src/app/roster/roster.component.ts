@@ -46,7 +46,7 @@ export class RosterComponent implements OnInit {
     Compleo: 'https://cdn.discordapp.com/banners/160900248602935296/44d6c4cfafdba7d9c02dd2de2d997893.png?size=480',
     Magnatas: 'https://cdn.discordapp.com/banners/160900248602935296/a_566280575de0b390dd93f501dffe0a77.gif?size=480',
     Siose: 'https://cdn.discordapp.com/banners/160900248602935296/a_59a351757b77fd6bdf4fb9c9d66ab5bd.gif?size=480',
-    Taiyakis: 'https://cdn.discordapp.com/banners/160900248602935296/8772f8263af5af126c62734b23de437d.png?size=480',
+    Taiyakis: 'https://cdn.discordapp.com/banners/160900248602935296/977e7bc9d7f509a538cb41ffd96dfb40.png?size=480',
     Deadlybrother: 'https://cdn.discordapp.com/banners/160900248602935296/a_db9bd4ea98c2725348b62039c1b0a8de.gif?size=480'
   }
 
