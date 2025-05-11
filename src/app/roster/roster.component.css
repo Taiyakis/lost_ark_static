@@ -22,7 +22,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3A3E40; /* fallback */
+    background-color: #3A3E40;
+    /* fallback */
     color: #ECDFC9;
     min-height: 170px;
     background-size: cover;
@@ -56,7 +57,6 @@ a {
     background-color: #464B4B;
     flex: 1 1 calc(50% - 30px);
     box-shadow: -7px 6px 7px rgb(77 79 86 / 20%);
-    cursor: pointer;
 }
 
 .character:nth-child(odd) {
@@ -72,6 +72,17 @@ a {
     border-bottom-left-radius: 16px;
     background-color: #464B4B;
     font-weight: 800;
+}
+
+.character .uwu {
+    border-top-right-radius: 16px;
+    color: #ECDFC9;
+    background-color: #464B4B;
+    font-weight: 800;
+}
+
+.character .uwu:hover {
+    cursor: pointer;
 }
 
 .character .name {
@@ -91,12 +102,14 @@ a {
 }
 
 .character .classImg {
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 0 16px 0;
     background-color: #515757;
 }
 
-.classImg img {
+.classImg img {  
+    height: 50px;
     width: 50px;
+    object-fit: contain;
 }
 
 .levelChanges {

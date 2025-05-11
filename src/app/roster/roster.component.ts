@@ -32,9 +32,9 @@ export class RosterComponent implements OnInit {
 
   // Banner img src
   banner: any = {
-    Madeline: 'https://cdn.discordapp.com/banners/151149364956495873/a_b98d82cf670b30b3e16c45132dd62cba.gif?size=480',
-    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.gif?size=480',
-    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.gif?size=480',
+    Madeline: 'https://cdn.discordapp.com/banners/151149364956495873/120c0aeb7ec87602c0a6c5f7e2ff4d09.png?size=480',
+    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.png?size=480',
+    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.png?size=480',
     Compleo: '',
     Magnatas: '',
     Siose: '',
@@ -44,7 +44,18 @@ export class RosterComponent implements OnInit {
 
   constructor(private api: ApiService, private renderer: Renderer2) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getRangomImage();
+  }
+
+  getRangomImage() {
+    const emptyBanners = ['Compleo', 'Magnatas', 'Siose', 'Deadlybrother']
+    this.api.getRandomImage().pipe().subscribe((data: []) => {
+      for (let i = 0; i < data.length; i++) {
+        this.banner[emptyBanners[i]] = data[i]['url']
+      }
+    })
+  }
 
   groupByRosterName(value: ApiResponse[]) {
     this.groupedData = groupBy(value, 'RosterName')
