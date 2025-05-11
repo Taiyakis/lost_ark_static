@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
@@ -16,9 +16,5 @@ export class ApiService {
 
   getHistory(): Observable<any> {
     return this.http.get(environment.apiUrl + '/getHistory');
-  }
-
-  getRandomImage(): Observable<any> {
-    return this.http.get(`https://api.nekosapi.com/v4/images/random?rating=safe&limit=4`);
   }
 }

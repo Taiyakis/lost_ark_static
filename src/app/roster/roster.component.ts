@@ -28,13 +28,21 @@ export class RosterComponent implements OnInit {
   charactersHistory: HistoryResponse[] = [];
   plainRosterData: ApiResponse[] = [];
   filteredHistory: HistoryResponse[] = [];
+  avarageRosterLevel: any = {};
   currentFilter: string = 'weekly';
+  currentRosterFilter: string = 'Highest';
+
+  filterRoster = {
+    Highest: [''],
+    Avarage: [''],
+    Lowest: [''],
+  }
 
   // Banner img src
   banner: any = {
     Madeline: 'https://cdn.discordapp.com/banners/151149364956495873/120c0aeb7ec87602c0a6c5f7e2ff4d09.png?size=480',
-    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.png?size=480',
-    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.png?size=480',
+    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.gif?size=480',
+    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.gif?size=480',
     Compleo: '',
     Magnatas: '',
     Siose: '',
@@ -45,16 +53,6 @@ export class RosterComponent implements OnInit {
   constructor(private api: ApiService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.getRangomImage();
-  }
-
-  getRangomImage() {
-    const emptyBanners = ['Compleo', 'Magnatas', 'Siose', 'Deadlybrother']
-    this.api.getRandomImage().pipe().subscribe((data: []) => {
-      for (let i = 0; i < data.length; i++) {
-        this.banner[emptyBanners[i]] = data[i]['url']
-      }
-    })
   }
 
   groupByRosterName(value: ApiResponse[]) {
@@ -62,8 +60,35 @@ export class RosterComponent implements OnInit {
     this.rosterNames = Object.keys(this.groupedData)
     this.plainRosterData = value;
 
+    this.precalculateFilterResults();
+
     console.log('rosterNames', this.rosterNames)
     console.log('groupedData', this.groupedData)
+  }
+
+  precalculateFilterResults() {
+    this.filterRoster['Highest'] = Object.keys(this.groupedData);
+    this.filterRoster['Lowest'] = Object.keys(this.groupedData).reverse();
+
+    const unsortedData = [];
+    for (const key in this.groupedData) {
+      if (this.groupedData.hasOwnProperty(key)) {
+        const group = this.groupedData[key];
+        let total: number = 0;
+        for (let i = 0; i < group.length; i++) {
+          const level: string = group[i].Level.toString();
+          total += parseFloat(level);
+        }
+
+        unsortedData.push({ name: key, level: Math.round((total / 6) * 100) / 100 })
+      }
+    }
+    unsortedData.sort((a, b) => b.level - a.level)
+    unsortedData.forEach(data => {
+      this.avarageRosterLevel[data.name] = data.level;
+    });
+    
+    this.filterRoster['Avarage'] = unsortedData.map(a => (a.name))
   }
 
   displayClassImg(className: string) {
@@ -133,6 +158,23 @@ export class RosterComponent implements OnInit {
       setTimeout(() => {
         this.renderer.removeClass(el, 'highlight');
       }, 4000);
+    }
+  }
+
+  onRosterFilterChange(filterType: string) {
+    this.currentRosterFilter = filterType;
+    switch (filterType) {
+      case 'Highest':
+        this.rosterNames = this.filterRoster['Highest'];
+        break;
+      case 'Avarage':
+        this.rosterNames = this.filterRoster['Avarage'];
+        break;
+      case 'Lowest':
+        this.rosterNames = this.filterRoster['Lowest'];
+        break;
+      default:
+        break;
     }
   }
 }

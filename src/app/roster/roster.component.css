@@ -2,8 +2,12 @@ a {
     all: unset;
 }
 
+* {
+    color: #ECDFC9;
+}
+
 .container {
-    padding-top: 20px;
+    padding-top: 8px;
     padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -24,7 +28,7 @@ a {
     justify-content: center;
     background-color: #3A3E40;
     /* fallback */
-    color: #ECDFC9;
+
     min-height: 170px;
     background-size: cover;
     background-position: center;
@@ -68,7 +72,7 @@ a {
 }
 
 .character .level {
-    color: #ECDFC9;
+
     border-bottom-left-radius: 16px;
     background-color: #464B4B;
     font-weight: 800;
@@ -76,7 +80,7 @@ a {
 
 .character .uwu {
     border-top-right-radius: 16px;
-    color: #ECDFC9;
+
     background-color: #464B4B;
     font-weight: 800;
 }
@@ -86,7 +90,7 @@ a {
 }
 
 .character .name {
-    color: #ECDFC9;
+
     border-top-left-radius: 16px;
     justify-content: flex-start;
     font-size: 20px;
@@ -96,7 +100,7 @@ a {
 
 .character .class {
     font-size: 14px;
-    color: #ECDFC9;
+
     background-color: #515757;
     font-weight: 400;
 }
@@ -106,7 +110,7 @@ a {
     background-color: #515757;
 }
 
-.classImg img {  
+.classImg img {
     height: 50px;
     width: 50px;
     object-fit: contain;
@@ -139,7 +143,7 @@ a {
     display: flex;
     justify-content: center;
     gap: 6px;
-    color: #ECDFC9;
+
     align-items: flex-end
 }
 
@@ -212,7 +216,6 @@ a {
 
 .event .name-container span {
     font-size: 20px;
-    color: #ECDFC9;
     font-weight: 600;
     padding: 0 4px 0 8px;
 }
@@ -226,7 +229,6 @@ a {
 }
 
 .event .level-container span {
-    color: #ECDFC9;
     font-size: 14px;
     text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
     padding: 0 8px 0 4px;
@@ -234,6 +236,48 @@ a {
 
 .active-button {
     background-color: rgb(67 109 3) !important;
+}
+
+.filters-container {
+    padding-top: 16px;
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: flex-end;
+}
+
+.filter-button {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #6d7174dc;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.filter-button:hover {
+    cursor: pointer;
+}
+
+.filter-button:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.filter-button:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+.avarage-level {
+    background-color: rgb(67 109 3);
+    border-radius: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px;
+}
+
+.hide {
+    display: none;
 }
 
 @keyframes blinkHighlight {
@@ -261,12 +305,12 @@ a {
     }
 
     .container {
-        padding-top: 20px;
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
         max-width: 1000px;
-        margin: auto;
+    }
+
+    .filters-container {
+        max-width: 1000px;
     }
 }
 
@@ -277,12 +321,12 @@ a {
     }
 
     .container {
-        padding-top: 20px;
-        display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
         max-width: 600px;
-        margin: auto;
+    }
+
+    .filters-container {
+        max-width: 600px;
     }
 }
 
@@ -292,12 +336,12 @@ a {
     }
 
     .container {
-        padding-top: 20px;
-        display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
         max-width: 400px;
-        margin: auto;
+    }
+
+    .filters-container {
+        max-width: 400px;
     }
 
     .character .name {
@@ -319,12 +363,12 @@ a {
     }
 
     .container {
-        padding-top: 20px;
-        display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
         max-width: 330px;
-        margin: auto;
+    }
+
+    .filters-container {
+        max-width: 330px;
     }
 
     .character .name {
