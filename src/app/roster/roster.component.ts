@@ -28,13 +28,13 @@ export class RosterComponent implements OnInit {
   charactersHistory: HistoryResponse[] = [];
   plainRosterData: ApiResponse[] = [];
   filteredHistory: HistoryResponse[] = [];
-  avarageRosterLevel: any = {};
+  averageRosterLevel: any = {};
   currentFilter: string = 'weekly';
   currentRosterFilter: string = 'Highest';
 
   filterRoster = {
     Highest: [''],
-    Avarage: [''],
+    Average: [''],
     Lowest: [''],
   }
 
@@ -85,10 +85,10 @@ export class RosterComponent implements OnInit {
     }
     unsortedData.sort((a, b) => b.level - a.level)
     unsortedData.forEach(data => {
-      this.avarageRosterLevel[data.name] = data.level;
+      this.averageRosterLevel[data.name] = data.level;
     });
-    
-    this.filterRoster['Avarage'] = unsortedData.map(a => (a.name))
+
+    this.filterRoster['Average'] = unsortedData.map(a => (a.name))
   }
 
   displayClassImg(className: string) {
@@ -167,8 +167,8 @@ export class RosterComponent implements OnInit {
       case 'Highest':
         this.rosterNames = this.filterRoster['Highest'];
         break;
-      case 'Avarage':
-        this.rosterNames = this.filterRoster['Avarage'];
+      case 'Average':
+        this.rosterNames = this.filterRoster['Average'];
         break;
       case 'Lowest':
         this.rosterNames = this.filterRoster['Lowest'];

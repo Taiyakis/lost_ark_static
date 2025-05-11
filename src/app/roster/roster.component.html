@@ -27,8 +27,8 @@
 <div class="filters-container">
     <span class="filter-button" (click)="onRosterFilterChange('Highest')"
         [ngClass]="{ 'active-button': 'Highest' == currentRosterFilter }">Highest</span>
-    <span class="filter-button" (click)="onRosterFilterChange('Avarage')"
-        [ngClass]="{ 'active-button': 'Avarage' == currentRosterFilter }">Avarage</span>
+    <span class="filter-button" (click)="onRosterFilterChange('Average')"
+        [ngClass]="{ 'active-button': 'Average' == currentRosterFilter }">Average</span>
     <span class="filter-button" (click)="onRosterFilterChange('Lowest')"
         [ngClass]="{ 'active-button': 'Lowest' == currentRosterFilter }">Lowest</span>
 </div>
@@ -37,8 +37,8 @@
     <div class="roster-container" *ngFor="let name of rosterNames">
         <div class="roster-header" [ngStyle]="{ 'background-image': 'url(' + banner[name] + ')' }">
             <h1>{{ name }}</h1>
-            <span class="avarage-level"
-                [ngClass]="{hide: 'Avarage' !== currentRosterFilter}">{{avarageRosterLevel[name]}}</span>
+            <span class="average-level"
+                [ngClass]="{hide: 'Average' !== currentRosterFilter }">{{averageRosterLevel[name]}}</span>
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of groupedData[name]" class="character">
