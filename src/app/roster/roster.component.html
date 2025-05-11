@@ -16,7 +16,8 @@
     </div>
     <ng-container *ngFor="let character of filteredHistory">
         <div class="event">
-            <div class="name-container"><a href="#{{character.CharacterName}}" (click)="addHighlightClass(character.CharacterName)"><span>{{ character.CharacterName
+            <div class="name-container"><a href="#{{character.CharacterName}}"
+                    (click)="addHighlightClass(character.CharacterName)"><span>{{ character.CharacterName
                         }}</span></a></div>
             <div class="level-container"><span>{{ getLevelChanges(character.CharacterName, false) }}</span></div>
         </div>
@@ -30,21 +31,25 @@
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of groupedData[name]" class="character">
-                <mat-grid-list (click)="openCharacterInfo(character.CharacterName)" cols="3" rowHeight="30px"
+                <mat-grid-list cols="3" rowHeight="30px"
                     class="character">
                     <mat-grid-tile [id]="character.CharacterName" class="name" [colspan]="2" [rowspan]="1">
                         {{ character.CharacterName }}
                     </mat-grid-tile>
-                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
-                        <img [src]=displayClassImg(character.ClassName) alt="">
+                    <mat-grid-tile class="uwu" [colspan]="1" [rowspan]="1">
+                        <a href="https://uwuowo.mathi.moe/character/CE/{{character.CharacterName}}" target="_blank">UwU</a>
                     </mat-grid-tile>
                     <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
                         {{ character.ClassName }}
+                    </mat-grid-tile>
+                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="2">
+                        <img [src]=displayClassImg(character.ClassName) alt="">
                     </mat-grid-tile>
                     <mat-grid-tile class="level" [colspan]="2" [rowspan]="1">
                         {{ character.Level }}<span [class.levelChanges]="isCharacterChanged(character.CharacterName)">{{
                             getLevelChanges(character.CharacterName, true, character.Level) }}</span>
                     </mat-grid-tile>
+
                 </mat-grid-list>
             </ng-container>
         </div>
