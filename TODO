@@ -14,20 +14,7 @@ Stuff:
     ✔ Manually update index.html file base href="/repo_name/" @done(25-03-28 21:35)
     ✔ ngh --dir=dist/browser
   
-Front-end:
-  ✔ Create clean angular project @done(25-03-28 21:34)
-  ☐ Cache API response (for better feel of web (i will display old data at start before it fetches newest from API, might be one day old))
-  ✔ Responsive web 3 modes, 21:9, 9:21, Phone @done(25-04-14 21:29)
-  ✔ Optimaze imgs @done(25-04-14 23:51)
-    ✘ Convert img to svg @cancelled(25-04-14 23:51)
-
-Back-end:
-  Map the responses:
-    ✔ rosterInfo @done(25-03-30 16:57)
-  ☐ protected API by with Discord SSO:
-    ✔ Have Fake AUTH @done(25-03-30 16:58)
-    ☐ personal progress tracking
-  ✔ node + express js @done(25-03-28 22:51)
-Other:
-  ✔ Setup Render with ExpressJs API @done(25-03-28 22:51)
-  ✔ Setup Angular project on Github @done(25-03-28 21:35)
+Hmmm:
+  ✔ Update Rosters table with new charachers "Mains" @done(25-05-17 14:17)
+  ✔ Update rostersview @done(25-05-17 14:17)
+  ✔ Update recentcharacterhistoryview @done(25-05-17 14:34)

@@ -11,10 +11,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getRosters(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/getRoster');
+    return this.http.get(environment.apiUrl + '/getRoster' + '?rostergroupid=' + environment.rosterGroupId);
   }
 
   getHistory(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/getHistory');
+    return this.http.get(environment.apiUrl + '/getHistory' + '?rostergroupid=' + environment.rosterGroupId);
   }
 }
