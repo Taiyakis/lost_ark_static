@@ -1,4 +1,5 @@
 export const environment = {
+    rosterGroupId: 2,
     production: false,
-    apiUrl: 'https://api.taiyaki.fun' // apiUrl: 'http://localhost:3000'
+    apiUrl: 'http://localhost:3000'
 }
