@@ -40,14 +40,14 @@ export class RosterComponent implements OnInit {
 
   // Banner img src
   banner: any = {
-    Madeline: 'https://cdn.discordapp.com/banners/151149364956495873/120c0aeb7ec87602c0a6c5f7e2ff4d09.png?size=480',
-    Syron: 'https://cdn.discordapp.com/banners/209351855338160129/a_6da3f94f6a7066d9ed759edb08188800.gif?size=480',
-    Everlasting: 'https://cdn.discordapp.com/banners/231776360253751296/a_df4d57056a385c9e57f7ab9e184d4d43.gif?size=480',
-    Compleo: 'https://cdn.discordapp.com/banners/160900248602935296/44d6c4cfafdba7d9c02dd2de2d997893.png?size=480',
-    Magnatas: 'https://cdn.discordapp.com/banners/160900248602935296/a_566280575de0b390dd93f501dffe0a77.gif?size=480',
-    Siose: 'https://cdn.discordapp.com/banners/160900248602935296/a_59a351757b77fd6bdf4fb9c9d66ab5bd.gif?size=480',
-    Taiyakis: 'https://cdn.discordapp.com/banners/160900248602935296/977e7bc9d7f509a538cb41ffd96dfb40.png?size=480',
-    Deadlybrother: 'https://cdn.discordapp.com/banners/160900248602935296/a_db9bd4ea98c2725348b62039c1b0a8de.gif?size=480'
+    Madeline: 'mad.png',
+    Syron: 'syron.jpeg',
+    Everlasting: 'everlasting.jpeg',
+    Compleo: 'compleo.png',
+    Magnatas: 'magnatas.png',
+    Siose: 'siose.png',
+    Taiyakis: 'taiyaki.png',
+    Deadlybrother: 'deadly.png'
   }
 
   constructor(private api: ApiService, private renderer: Renderer2) { }
