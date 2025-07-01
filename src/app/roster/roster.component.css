@@ -34,6 +34,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     text-shadow: -1px -1px 0 #515757, 1px -1px 0 #515757, -1px 1px 0 #515757, 1px 1px 0 #515757;
+    border-radius: 16px;
 }
 
 .roster-header h1 {
@@ -45,13 +46,9 @@ a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
     gap: 15px;
     padding-bottom: 15px;
     padding-top: 15px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
 }
 
 .character {
