@@ -69,7 +69,6 @@ a {
 }
 
 .character .level {
-
     border-bottom-left-radius: 16px;
     background-color: #464B4B;
     font-weight: 800;
@@ -97,7 +96,6 @@ a {
 
 .character .class {
     font-size: 14px;
-
     background-color: #515757;
     font-weight: 400;
 }
@@ -105,6 +103,12 @@ a {
 .character .classImg {
     border-radius: 0 0 16px 0;
     background-color: #515757;
+}
+
+.character .combat {
+    border-bottom-left-radius: 16px;
+    background-color: #515757;
+    font-weight: 800;
 }
 
 .classImg img {

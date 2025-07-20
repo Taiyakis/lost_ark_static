@@ -53,12 +53,15 @@
                     <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
                         {{ character.ClassName }}
                     </mat-grid-tile>
-                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="2">
+                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
                         <img [src]=displayClassImg(character.ClassName) alt="">
                     </mat-grid-tile>
                     <mat-grid-tile class="level" [colspan]="2" [rowspan]="1">
                         {{ character.Level }}<span [class.levelChanges]="isCharacterChanged(character.CharacterName)">{{
                             getLevelChanges(character.CharacterName, true, character.Level) }}</span>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="combat" [colspan]="2" [rowspan]="1">
+                        Combat Score
                     </mat-grid-tile>
                 </mat-grid-list>
             </ng-container>
