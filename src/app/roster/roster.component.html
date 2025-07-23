@@ -50,18 +50,28 @@
                         <a href="https://uwuowo.mathi.moe/character/CE/{{character.CharacterName}}"
                             target="_blank">Gear</a>
                     </mat-grid-tile>
-                    <mat-grid-tile class="class" [colspan]="2" [rowspan]="1">
-                        {{ character.ClassName }}
+                    <mat-grid-tile class="combat"
+                        [ngClass]="isSupport(character.ClassName) ? 'colorSupport' : 'colorDps'" [colspan]="2"
+                        [rowspan]="1">
+                        <img [src]="displayRoleIcon(character.ClassName)" width="24" height="24" />
+
+                        <svg width="24px" height="24px" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 7L12 3L20 7C20 12.1932 17.2157 19.5098 12 21C6.78428 19.5098 4 12.1932 4 7Z"
+                                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        {{ character.Level }}
                     </mat-grid-tile>
-                    <mat-grid-tile class="classImg" [colspan]="1" [rowspan]="3">
+                    <mat-grid-tile class="classImg tooltip" [colspan]="1" [rowspan]="2">
                         <img [src]=displayClassImg(character.ClassName) alt="">
+                        <span class="tooltiptext">
+                            {{ character.ClassName }}<br>
+                        </span>
                     </mat-grid-tile>
                     <mat-grid-tile class="level" [colspan]="2" [rowspan]="1">
                         {{ character.Level }}<span [class.levelChanges]="isCharacterChanged(character.CharacterName)">{{
                             getLevelChanges(character.CharacterName, true, character.Level) }}</span>
-                    </mat-grid-tile>
-                    <mat-grid-tile class="combat" [colspan]="2" [rowspan]="1">
-                        Combat Score
                     </mat-grid-tile>
                 </mat-grid-list>
             </ng-container>

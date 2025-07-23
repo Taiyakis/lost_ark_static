@@ -94,21 +94,27 @@ a {
     font-weight: 600;
 }
 
-.character .class {
-    font-size: 14px;
-    background-color: #515757;
-    font-weight: 400;
-}
-
 .character .classImg {
     border-radius: 0 0 16px 0;
     background-color: #515757;
 }
 
 .character .combat {
-    border-bottom-left-radius: 16px;
+    font-size: 16px;
     background-color: #515757;
     font-weight: 800;
+}
+
+.character .combat svg {
+    fill: #F44336;
+}
+
+.character .colorSupport {
+    background: radial-gradient(ellipse at center, rgb(67 109 3) 0%, #515757 60%);
+}
+
+.character .colorDps {
+    background: radial-gradient(ellipse at center, rgb(109, 28, 3) 0%, #515757 60%);
 }
 
 .classImg img {

@@ -95,6 +95,12 @@ export class RosterComponent implements OnInit {
     return `${className}.png`
   }
 
+  displayRoleIcon(className: string) {
+    return (this.isSupport(className))
+      ? 'shield.svg'
+      : 'sword.svg';
+  }
+
   openCharacterInfo(characterName: string) {
     window.open(`https://uwuowo.mathi.moe/character/CE/${characterName}`, '_blank');
   }
@@ -176,5 +182,9 @@ export class RosterComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  isSupport(className: string): boolean {
+    return (['Bard', 'Paladin', 'Artist'].includes(className))
   }
 }
