@@ -105,16 +105,16 @@ a {
     font-weight: 800;
 }
 
-.character .combat svg {
-    fill: #F44336;
+.character .combat img {
+    padding-right: 4px;
 }
 
 .character .colorSupport {
-    background: radial-gradient(ellipse at center, rgb(67 109 3) 0%, #515757 60%);
+    background: radial-gradient(ellipse at center, rgb(67 109 3) 0%, #515757 65%);
 }
 
 .character .colorDps {
-    background: radial-gradient(ellipse at center, rgb(109, 28, 3) 0%, #515757 60%);
+    background: radial-gradient(ellipse at center, rgb(109, 28, 3) 0%, #515757 65%);
 }
 
 .classImg img {

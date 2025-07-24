@@ -53,15 +53,8 @@
                     <mat-grid-tile class="combat"
                         [ngClass]="isSupport(character.ClassName) ? 'colorSupport' : 'colorDps'" [colspan]="2"
                         [rowspan]="1">
-                        <img [src]="displayRoleIcon(character.ClassName)" width="24" height="24" />
-
-                        <svg width="24px" height="24px" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 7L12 3L20 7C20 12.1932 17.2157 19.5098 12 21C6.78428 19.5098 4 12.1932 4 7Z"
-                                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-
-                        {{ character.Level }}
+                        <img [src]="displayRoleIcon(character.ClassName)" width="20" height="20" />
+                        {{ character.Score }}
                     </mat-grid-tile>
                     <mat-grid-tile class="classImg tooltip" [colspan]="1" [rowspan]="2">
                         <img [src]=displayClassImg(character.ClassName) alt="">
