@@ -97,8 +97,8 @@ export class RosterComponent implements OnInit {
 
   displayRoleIcon(className: string) {
     return (this.isSupport(className))
-      ? 'support.svg'
-      : 'damage.svg';
+      ? 'support.png'
+      : 'damage.png';
   }
 
   openCharacterInfo(characterName: string) {

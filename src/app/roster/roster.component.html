@@ -50,9 +50,7 @@
                         <a href="https://uwuowo.mathi.moe/character/CE/{{character.CharacterName}}"
                             target="_blank">Gear</a>
                     </mat-grid-tile>
-                    <mat-grid-tile class="combat"
-                        [ngClass]="isSupport(character.ClassName) ? 'colorSupport' : 'colorDps'" [colspan]="2"
-                        [rowspan]="1">
+                    <mat-grid-tile class="combat" [colspan]="2" [rowspan]="1">
                         <img [src]="displayRoleIcon(character.ClassName)" width="20" height="20" />
                         {{ character.Score }}
                     </mat-grid-tile>
