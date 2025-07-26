@@ -20,6 +20,14 @@ export class RaidInfoComponent implements OnInit {
   groupedByRoster: string[] = [];
   raids = [
     {
+      name: "FoD Tarkal HM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "FoD Tarkal NM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
       name: "Mordum HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
@@ -59,52 +67,68 @@ export class RaidInfoComponent implements OnInit {
       const rosterName = this.groupedByRoster[i];
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
-        this.updateMordumRunCount(i, char)
-        this.updateBrelRunCount(i, char)
-        this.updateAegirRunCount(i, char)
+        this.updateTarkalRunCount(0, i, char)
+        this.updateMordumRunCount(2, i, char)
+        this.updateBrelRunCount(4, i, char)
+        this.updateAegirRunCount(6, i, char)
       }
     }
   }
 
-  updateMordumRunCount(indexToUpdate: number, char: ApiResponse) {
+  updateTarkalRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
+    switch (true) {
+      case char.Level >= 1720:
+        // HM
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        break;
+      case char.Level >= 1680:
+        // NM
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        break;
+      default:
+        break;
+    }
+  }
+
+  updateMordumRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
     switch (true) {
       case char.Level >= 1700:
         // HM
-        this.increamentRoleByClassName(0, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
       case char.Level >= 1680:
         // NM
-        this.increamentRoleByClassName(1, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
         break;
       default:
         break;
     }
   }
 
-  updateBrelRunCount(indexToUpdate: number, char: ApiResponse) {
+  updateBrelRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
     switch (true) {
       case char.Level >= 1690:
         // HM
-        this.increamentRoleByClassName(2, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
       case char.Level >= 1670:
         // NM
-        this.increamentRoleByClassName(3, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
         break;
       default:
         break;
     }
   }
 
-  updateAegirRunCount(indexToUpdate: number, char: ApiResponse) {
+  updateAegirRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
     switch (true) {
       case char.Level >= 1680:
         // HM
-        this.increamentRoleByClassName(4, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
       case char.Level >= 1660:
         // NM
-        this.increamentRoleByClassName(5, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
         break;
       default:
         break;
