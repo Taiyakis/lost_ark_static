@@ -47,10 +47,10 @@ export class RaidInfoComponent implements OnInit {
       name: "Aegir HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
-    {
-      name: "Aegir NM",
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
+    // {
+    //   name: "Aegir NM",
+    //   values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    // },
   ];
 
   constructor() { }
@@ -126,10 +126,11 @@ export class RaidInfoComponent implements OnInit {
         // HM
         this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
-      case char.Level >= 1660:
-        // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-        break;
+      // This raid is irelevant now
+      // case char.Level >= 1660:
+      //   // NM
+      //   this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+      //   break;
       default:
         break;
     }
