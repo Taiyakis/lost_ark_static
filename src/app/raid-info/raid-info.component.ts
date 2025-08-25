@@ -47,10 +47,10 @@ export class RaidInfoComponent implements OnInit {
       name: "Aegir HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
-    {
-      name: "Aegir NM",
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
+    // {
+    //   name: "Aegir NM",
+    //   values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    // },
   ];
 
   constructor() { }
@@ -126,10 +126,11 @@ export class RaidInfoComponent implements OnInit {
         // HM
         this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
-      case char.Level >= 1660:
-        // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-        break;
+      // This raid is irelevant now
+      // case char.Level >= 1660:
+      //   // NM
+      //   this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+      //   break;
       default:
         break;
     }
@@ -148,7 +149,7 @@ export class RaidInfoComponent implements OnInit {
    * 8 - Aegir NM
    */
   increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
-    if (this.isSupport(char.ClassName)) {
+    if (char.IsSupport) {
       this.raids[raidIndex].values[indexToUpdate].supp += 1
       this.raids[raidIndex].values[indexToUpdate].suppNames.push(char.CharacterName)
       this.raids[raidIndex].values[0].supp += 1;
@@ -159,9 +160,5 @@ export class RaidInfoComponent implements OnInit {
       this.raids[raidIndex].values[0].dps += 1;
       this.raids[raidIndex].values[0].dpsNames.push(char.CharacterName)
     }
-  }
-
-  isSupport(className: string): boolean {
-    return (['Bard', 'Paladin', 'Artist'].indexOf(className) >= 0)
   }
 }
