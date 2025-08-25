@@ -3,7 +3,8 @@ export interface ApiResponse {
     CharacterName: string,
     ClassName: string,
     Level: number,
-    Score: number
+    Score: number,
+    IsSupport: boolean
 }
 
 export interface HistoryResponse {

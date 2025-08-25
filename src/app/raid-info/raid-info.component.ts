@@ -149,7 +149,7 @@ export class RaidInfoComponent implements OnInit {
    * 8 - Aegir NM
    */
   increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
-    if (this.isSupport(char.ClassName)) {
+    if (char.IsSupport) {
       this.raids[raidIndex].values[indexToUpdate].supp += 1
       this.raids[raidIndex].values[indexToUpdate].suppNames.push(char.CharacterName)
       this.raids[raidIndex].values[0].supp += 1;
@@ -160,9 +160,5 @@ export class RaidInfoComponent implements OnInit {
       this.raids[raidIndex].values[0].dps += 1;
       this.raids[raidIndex].values[0].dpsNames.push(char.CharacterName)
     }
-  }
-
-  isSupport(className: string): boolean {
-    return (['Bard', 'Paladin', 'Artist'].indexOf(className) >= 0)
   }
 }
