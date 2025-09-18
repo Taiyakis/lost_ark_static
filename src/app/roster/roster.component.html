@@ -37,8 +37,7 @@
     <div class="roster-container" *ngFor="let name of rosterNames">
         <div class="roster-header" [ngStyle]="{ 'background-image': 'url(' + banner[name] + ')' }">
             <h1>{{ name }}</h1>
-            <span class="average-level"
-                [ngClass]="{hide: 'Average' !== currentRosterFilter }">{{averageRosterLevel[name]}}</span>
+            <span class="average-level">{{averageRosterLevel[name]}}</span>
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of groupedData[name]" class="character">
