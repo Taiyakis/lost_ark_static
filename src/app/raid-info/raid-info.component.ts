@@ -20,6 +20,22 @@ export class RaidInfoComponent implements OnInit {
   groupedByRoster: string[] = ['Total'];
   raids = [
     {
+      name: "Kazeros HM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Kazeros NM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Act 4 HM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Act 4 NM",
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
       name: "Strike HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
@@ -31,10 +47,11 @@ export class RaidInfoComponent implements OnInit {
       name: "Mordum HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
-    {
-      name: "Mordum NM",
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
+    // Deprecated
+    // {
+    //   name: "Mordum NM",
+    //   values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    // },
     {
       name: "Brel HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
@@ -59,11 +76,43 @@ export class RaidInfoComponent implements OnInit {
       const rosterName = this.groupedByRoster[i];
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
-        this.updateTarkalRunCount(0, i, char)
-        this.updateMordumRunCount(2, i, char)
-        this.updateBrelRunCount(4, i, char)
-        this.updateAegirRunCount(5, i, char)
+        this.updateKazerosRunCount(0, i, char)
+        this.updateAct4RunCount(2, i, char)
+        this.updateTarkalRunCount(4, i, char)
+        this.updateMordumRunCount(6, i, char)
+        this.updateBrelRunCount(7, i, char)
+        this.updateAegirRunCount(8, i, char)
       }
+    }
+  }
+
+  updateKazerosRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
+    switch (true) {
+      case char.Level >= 1730:
+        // HM
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        break;
+      case char.Level >= 1710:
+        // NM
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        break;
+      default:
+        break;
+    }
+  }
+
+  updateAct4RunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
+    switch (true) {
+      case char.Level >= 1720:
+        // HM
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        break;
+      case char.Level >= 1700:
+        // NM
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        break;
+      default:
+        break;
     }
   }
 
@@ -88,10 +137,10 @@ export class RaidInfoComponent implements OnInit {
         // HM
         this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
-      case char.Level >= 1680:
-        // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-        break;
+      // case char.Level >= 1680:
+      //   // NM
+      //   this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+      //   break;
       default:
         break;
     }
