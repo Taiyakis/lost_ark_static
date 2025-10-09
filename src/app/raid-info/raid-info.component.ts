@@ -47,11 +47,6 @@ export class RaidInfoComponent implements OnInit {
       name: "Mordum HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
-    // Deprecated
-    // {
-    //   name: "Mordum NM",
-    //   values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    // },
     {
       name: "Brel HM",
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
@@ -70,7 +65,6 @@ export class RaidInfoComponent implements OnInit {
 
   groupByRoster(value: ApiResponse[]) {
     const groupByRosterName = groupBy(value, 'RosterName')
-    // this.groupedByRoster = Object.keys(groupByRosterName)
     this.groupedByRoster = this.groupedByRoster.concat(Object.keys(groupByRosterName))
     for (let i = 1; i < this.groupedByRoster.length; i++) {
       const rosterName = this.groupedByRoster[i];
@@ -137,10 +131,6 @@ export class RaidInfoComponent implements OnInit {
         // HM
         this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
-      // case char.Level >= 1680:
-      //   // NM
-      //   this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-      //   break;
       default:
         break;
     }
@@ -171,12 +161,16 @@ export class RaidInfoComponent implements OnInit {
   /**
    * Increament dps or supp for specific raid
    * 0 - Total
-   * 1 - FoD Tarkal HM
-   * 2 - FoD Tarkal NM
-   * 3 - Mordum HM
-   * 4 - Mordum NM
-   * 5 - Brel HM
-   * 6 - Aegir HM
+   * 1 - Kazeros HM
+   * 2 - Kazeros NM
+   * 3 - Act 4 HM
+   * 4 - Act 4 NM
+   * 5 - Strike HM
+   * 6 - Strike NM
+   * 7 - Mordum HM
+   * 8 - Mordum NM
+   * 9 - Brel HM
+   * 10 - Aegir HM
    */
   increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
     if (char.IsSupport) {
