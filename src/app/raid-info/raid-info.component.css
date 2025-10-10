@@ -61,6 +61,11 @@ tr:nth-child(even) {
     display: none;
 }
 
+.raidLevel {
+    margin: 0px;
+    color: chartreuse;
+}
+
 @media (max-width: 1080px) {
     .container {
         width: 1000px;
