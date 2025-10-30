@@ -51,6 +51,8 @@ export class RaidInfoComponent implements OnInit {
     }
   ];
 
+  characterRaidCount: { [key: string]: number } = {};
+
   constructor() { }
 
   ngOnInit(): void {
@@ -64,6 +66,7 @@ export class RaidInfoComponent implements OnInit {
       const rosterName = this.groupedByRoster[i];
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
+        this.initializeCharacterRaidCount(char)
         this.updateKazerosRunCount(0, i, char)
         this.updateAct4RunCount(2, i, char)
         this.updateMordumRunCount(4, i, char)
@@ -150,6 +153,11 @@ export class RaidInfoComponent implements OnInit {
    * 6 - Brel HM
    */
   increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
+    if (this.isMaximumRaidCountReached(char))
+      return;
+
+    this.characterRaidCount[char.CharacterName] += 1;
+
     if (char.IsSupport) {
       this.raids[raidIndex].values[indexToUpdate].supp += 1
       this.raids[raidIndex].values[indexToUpdate].suppNames.push(char.CharacterName)
@@ -162,4 +170,13 @@ export class RaidInfoComponent implements OnInit {
       this.raids[raidIndex].values[0].dpsNames.push(char.CharacterName)
     }
   }
+
+  isMaximumRaidCountReached(char: ApiResponse): boolean {
+    return this.characterRaidCount[char.CharacterName] === 3
+  }
+
+  initializeCharacterRaidCount(char: ApiResponse) {
+    this.characterRaidCount[char.CharacterName] = 0;
+  }
 }
+
