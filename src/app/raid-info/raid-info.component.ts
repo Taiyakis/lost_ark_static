@@ -40,16 +40,6 @@ export class RaidInfoComponent implements OnInit {
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
     {
-      name: "Strike HM",
-      raidLevelRequirement: 1720,
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
-    {
-      name: "Strike NM",
-      raidLevelRequirement: 1680,
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
-    {
       name: "Mordum HM",
       raidLevelRequirement: 1700,
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
@@ -57,11 +47,6 @@ export class RaidInfoComponent implements OnInit {
     {
       name: "Brel HM",
       raidLevelRequirement: 1690,
-      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
-    },
-    {
-      name: "Aegir HM",
-      raidLevelRequirement: 1680,
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     }
   ];
@@ -81,10 +66,8 @@ export class RaidInfoComponent implements OnInit {
         const char = groupByRosterName[rosterName][k];
         this.updateKazerosRunCount(0, i, char)
         this.updateAct4RunCount(2, i, char)
-        this.updateTarkalRunCount(4, i, char)
-        this.updateMordumRunCount(6, i, char)
-        this.updateBrelRunCount(7, i, char)
-        this.updateAegirRunCount(8, i, char)
+        this.updateMordumRunCount(4, i, char)
+        this.updateBrelRunCount(5, i, char)
       }
     }
   }
@@ -156,17 +139,6 @@ export class RaidInfoComponent implements OnInit {
     }
   }
 
-  updateAegirRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
-    switch (true) {
-      case char.Level >= 1680:
-        // HM
-        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
-        break;
-      default:
-        break;
-    }
-  }
-
   /**
    * Increament dps or supp for specific raid
    * 0 - Total
@@ -174,12 +146,8 @@ export class RaidInfoComponent implements OnInit {
    * 2 - Kazeros NM
    * 3 - Act 4 HM
    * 4 - Act 4 NM
-   * 5 - Strike HM
-   * 6 - Strike NM
-   * 7 - Mordum HM
-   * 8 - Mordum NM
-   * 9 - Brel HM
-   * 10 - Aegir HM
+   * 5 - Mordum HM
+   * 6 - Brel HM
    */
   increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
     if (char.IsSupport) {
