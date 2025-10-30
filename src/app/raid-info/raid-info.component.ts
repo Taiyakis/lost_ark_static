@@ -40,6 +40,16 @@ export class RaidInfoComponent implements OnInit {
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
     },
     {
+      name: "Strike HM",
+      raidLevelRequirement: 1720,
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
+      name: "Strike NM",
+      raidLevelRequirement: 1680,
+      values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
+    },
+    {
       name: "Mordum HM",
       raidLevelRequirement: 1700,
       values: [{ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }, { dps: 0, supp: 0, dpsNames: [''], suppNames: [''] }],
@@ -69,8 +79,10 @@ export class RaidInfoComponent implements OnInit {
         this.initializeCharacterRaidCount(char)
         this.updateKazerosRunCount(0, i, char)
         this.updateAct4RunCount(2, i, char)
-        this.updateMordumRunCount(4, i, char)
-        this.updateBrelRunCount(5, i, char)
+        // Remove after strike raid gone
+        this.updateTarkalRunCount(4, i, char)
+        this.updateMordumRunCount(6, i, char)
+        this.updateBrelRunCount(7, i, char)
       }
     }
   }
@@ -79,11 +91,11 @@ export class RaidInfoComponent implements OnInit {
     switch (true) {
       case char.Level >= 1730:
         // HM
-        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char, true)
         break;
       case char.Level >= 1710:
         // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char, true)
         break;
       default:
         break;
@@ -94,11 +106,11 @@ export class RaidInfoComponent implements OnInit {
     switch (true) {
       case char.Level >= 1720:
         // HM
-        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char, true)
         break;
       case char.Level >= 1700:
         // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char, true)
         break;
       default:
         break;
@@ -152,11 +164,12 @@ export class RaidInfoComponent implements OnInit {
    * 5 - Mordum HM
    * 6 - Brel HM
    */
-  increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse) {
-    if (this.isMaximumRaidCountReached(char))
+  increamentRoleByClassName(raidIndex: number, indexToUpdate: number, char: ApiResponse, ignore: boolean = false) {
+    if (this.isMaximumRaidCountReached(char) && !ignore)
       return;
 
-    this.characterRaidCount[char.CharacterName] += 1;
+    if (!ignore)
+      this.characterRaidCount[char.CharacterName] += 1;
 
     if (char.IsSupport) {
       this.raids[raidIndex].values[indexToUpdate].supp += 1
