@@ -28,6 +28,60 @@ mat-toolbar {
     border-radius: 16px;
 }
 
+.discord-login-button {
+    color: #ECDFC9;
+    display: flex;
+    background-color: #5865F2;
+    border-style: unset;
+    border-radius: 8px;
+    align-items: center;
+    gap: 3px;
+    padding: 6px;
+}
+
+.discord-user {
+    height: 40px;
+}
+
+.discord-user img {
+    height: inherit;
+    width: 40px;
+    border-radius: 8px;
+}
+
+.discord-user img:hover {
+    cursor: pointer;
+}
+
+.discord-dropdown {
+    position: relative;
+}
+
+.discord-dropdown-menu {
+    right: 0;
+    top: calc(100% + .10rem);
+    position: absolute;
+    border-radius: 8px;
+    background-color: #595f5f;
+    padding: 4px;
+    box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.discord-dropdown-menu.focus {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    z-index: 100;
+}
+
+.discord-dropdown-menu-item:hover {
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .logo {
         font-size: 24px;

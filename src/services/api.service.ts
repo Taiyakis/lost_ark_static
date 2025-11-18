@@ -11,10 +11,18 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getRosters(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/getRoster' + '?rostergroupid=' + environment.rosterGroupId);
+    return this.http.get(`${environment.apiUrl}/getRoster?rostergroupid=${environment.rosterGroupId}`);
   }
 
   getHistory(): Observable<any> {
-    return this.http.get(environment.apiUrl + '/getHistory' + '?rostergroupid=' + environment.rosterGroupId);
+    return this.http.get(`${environment.apiUrl}/getHistory?rostergroupid=${environment.rosterGroupId}`);
+  }
+
+  getUser(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/getUser`, { withCredentials: true });
+  }
+
+  logoutUser(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/logout`, { withCredentials: true });
   }
 }
