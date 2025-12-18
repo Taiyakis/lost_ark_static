@@ -8,10 +8,11 @@ import { catchError, fromEvent, retry, throwError, timer } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { ProgressSpinnerMode, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { SnowComponent } from "./snow/snow.component";
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RosterComponent, RaidInfoComponent, NgIf, MatProgressSpinnerModule, MatIconModule],
+  imports: [HeaderComponent, RosterComponent, RaidInfoComponent, NgIf, MatProgressSpinnerModule, MatIconModule, SnowComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [ApiService]
