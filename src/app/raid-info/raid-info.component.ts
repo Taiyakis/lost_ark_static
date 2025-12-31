@@ -14,10 +14,12 @@ import { groupBy } from 'lodash';
 export class RaidInfoComponent implements OnInit {
   @Input()
   set rosters(value: ApiResponse[]) {
+    if (value.length == 0)
+      return;
+
     this.groupByRoster(value);
   }
 
-  private staticMemberCount = 8;
   groupedByRoster: string[] = ['Total'];
   raids = [
     {
@@ -51,9 +53,11 @@ export class RaidInfoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  generateColumns(count: number) {
     this.raids.forEach((raid) => {
-      for (let index = 0; index < this.staticMemberCount; index++) {
+      for (let index = 0; index < count; index++) {
         raid.values.push({ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] })
       }
     })
@@ -61,6 +65,7 @@ export class RaidInfoComponent implements OnInit {
 
   groupByRoster(value: ApiResponse[]) {
     const groupByRosterName = groupBy(value, 'RosterName')
+    this.generateColumns(Object.keys(groupByRosterName).length)
     this.groupedByRoster = this.groupedByRoster.concat(Object.keys(groupByRosterName))
     for (let i = 1; i < this.groupedByRoster.length; i++) {
       const rosterName = this.groupedByRoster[i];
