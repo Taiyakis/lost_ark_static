@@ -18,3 +18,6 @@ Hmmm:
   ✔ Update Rosters table with new charachers "Mains" @done(25-05-17 14:17)
   ✔ Update rostersview @done(25-05-17 14:17)
   ✔ Update recentcharacterhistoryview @done(25-05-17 14:34)
+
+Angular v21:
+  Angular Aria "npm i @angular/aria"

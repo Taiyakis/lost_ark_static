@@ -3,7 +3,8 @@ import { ApiResponse } from '../api-model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { groupBy } from 'lodash';
-import { config } from '../../app-config';
+import { globalVariable } from '../../environments/global-variables';
+
 
 @Component({
   selector: 'app-raid-info',
@@ -22,7 +23,7 @@ export class RaidInfoComponent implements OnInit {
   }
 
   groupedByRoster: string[] = ['Total'];
-  raids = config.raids;
+  raids = globalVariable.appConfig.raids;
 
   characterRaidCount: { [key: string]: number } = {};
 
