@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { first } from 'rxjs';
 import { isNull } from 'lodash';
 import { NgIf } from '@angular/common';
-import { config } from '../../app-config';
+import { globalVariable } from '../../environments/global-variables';
 
 interface User {
   discord_id: string,
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   }
 
   redirectDiscordLogin() {
-    window.location.href = `${config.api.endPoint}/auth/discord/login`;
+    window.location.href = `${globalVariable.appConfig.api.endPoint}/auth/discord/login`;
   }
 
   isUserSet() {
