@@ -49,11 +49,31 @@ export class RaidInfoComponent implements OnInit {
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
         this.initializeCharacterRaidCount(char)
-        this.updateSerkaRunCount(0, i, char)
-        this.updateKazerosRunCount(3, i, char)
-        this.updateAct4RunCount(5, i, char)
-        this.updateMordumRunCount(7, i, char)
+        this.updateCathedralRunCount(0, i, char)
+        this.updateSerkaRunCount(3, i, char)
+        this.updateKazerosRunCount(6, i, char)
+        this.updateAct4RunCount(8, i, char)
+        this.updateMordumRunCount(10, i, char)
       }
+    }
+  }
+
+  updateCathedralRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
+    switch (true) {
+      case char.Level >= 1750:
+        // NM
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        break;
+      case char.Level >= 1720:
+        // HM
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        break;
+      case char.Level >= 1700:
+        // NM
+        this.increamentRoleByClassName(rowIndex + 2, indexToUpdate, char)
+        break;
+      default:
+        break;
     }
   }
 
