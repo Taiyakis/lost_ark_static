@@ -5,6 +5,21 @@ var APP_CONFIG = {
     },
     raids: [
         {
+            name: "Cathedral 💀",
+            raidLevelRequirement: 1750,
+            values: [],
+        },
+        {
+            name: "Cathedral HM",
+            raidLevelRequirement: 1720,
+            values: [],
+        },
+        {
+            name: "Cathedral NM",
+            raidLevelRequirement: 1700,
+            values: [],
+        },
+        {
             name: "Serka 💀",
             raidLevelRequirement: 1740,
             values: [],
