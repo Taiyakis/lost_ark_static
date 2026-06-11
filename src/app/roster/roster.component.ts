@@ -29,13 +29,17 @@ export class RosterComponent implements OnInit {
   plainRosterData: ApiResponse[] = [];
   filteredHistory: HistoryResponse[] = [];
   averageRosterLevel: any = {};
+  averageRosterCombatPower: any = {};
   currentFilter: string = 'weekly';
-  currentRosterFilter: string = 'Highest';
+  currentRosterFilter: string = 'HighestCombatPower';
 
-  filterRoster = {
-    Highest: [''],
-    Average: [''],
-    Lowest: [''],
+  filtersBy = {
+    HighestCombatPower: [''],
+    AverageCombatPower: [''],
+    LowestCombatPower: [''],
+    HighestLevel: [''],
+    AverageLevel: [''],
+    LowestLevel: [''],
   }
 
   // Banner img src
@@ -67,28 +71,45 @@ export class RosterComponent implements OnInit {
   }
 
   precalculateFilterResults() {
-    this.filterRoster['Highest'] = Object.keys(this.groupedData);
-    this.filterRoster['Lowest'] = Object.keys(this.groupedData).reverse();
+    // Calculating Avarage Level
+    this.filtersBy['HighestLevel'] = Object.keys(this.groupedData);
+    this.filtersBy['LowestLevel'] = Object.keys(this.groupedData).reverse();
 
     const unsortedData = [];
     for (const key in this.groupedData) {
       if (this.groupedData.hasOwnProperty(key)) {
         const group = this.groupedData[key];
-        let total: number = 0;
+        let avarageLevel = 0;
+        let avarageCombatPower = 0;
+        let highestCombatPower: number = 0;
         for (let i = 0; i < group.length; i++) {
           const level: string = group[i].Level.toString();
-          total += parseFloat(level);
+          avarageLevel += parseFloat(level);
+          const score: string = group[i].Score.toString();
+          avarageCombatPower += parseFloat(score)
+
+          if (highestCombatPower < group[i].Score)
+            highestCombatPower = group[i].Score;
         }
 
-        unsortedData.push({ name: key, level: Math.round((total / 6) * 100) / 100 })
+        unsortedData.push({ name: key, level: Math.round((avarageLevel / 6) * 100) / 100, score: Math.round((avarageCombatPower / 6) * 100) / 100, highestCombatPower: Math.round((highestCombatPower) * 100) / 100 })
       }
     }
-    unsortedData.sort((a, b) => b.level - a.level)
     unsortedData.forEach(data => {
       this.averageRosterLevel[data.name] = data.level;
+      this.averageRosterCombatPower[data.name] = data.score;
     });
 
-    this.filterRoster['Average'] = unsortedData.map(a => (a.name))
+    unsortedData.sort((a, b) => b.level - a.level)
+    this.filtersBy['AverageLevel'] = unsortedData.map(a => (a.name))
+
+    // Calculating avarage 
+    unsortedData.sort((a, b) => b.score - a.score)
+    this.filtersBy['AverageCombatPower'] = unsortedData.map(a => (a.name))
+
+    unsortedData.sort((a, b) => b.highestCombatPower - a.highestCombatPower)
+    this.filtersBy['HighestCombatPower'] = unsortedData.map(a => (a.name))
+    this.filtersBy['LowestCombatPower'] = unsortedData.map(a => (a.name)).reverse()
   }
 
   displayClassImg(className: string) {
@@ -167,17 +188,26 @@ export class RosterComponent implements OnInit {
     }
   }
 
-  onRosterFilterChange(filterType: string) {
+  onRosterFilterChanged(filterType: string) {
     this.currentRosterFilter = filterType;
     switch (filterType) {
-      case 'Highest':
-        this.rosterNames = this.filterRoster['Highest'];
+      case 'HighestCombatPower':
+        this.rosterNames = this.filtersBy['HighestCombatPower'];
         break;
-      case 'Average':
-        this.rosterNames = this.filterRoster['Average'];
+      case 'AverageCombatPower':
+        this.rosterNames = this.filtersBy['AverageCombatPower'];
         break;
-      case 'Lowest':
-        this.rosterNames = this.filterRoster['Lowest'];
+      case 'LowestCombatPower':
+        this.rosterNames = this.filtersBy['LowestCombatPower'];
+        break;
+      case 'HighestLevel':
+        this.rosterNames = this.filtersBy['HighestLevel'];
+        break;
+      case 'AverageLevel':
+        this.rosterNames = this.filtersBy['AverageLevel'];
+        break;
+      case 'LowestLevel':
+        this.rosterNames = this.filtersBy['LowestLevel'];
         break;
       default:
         break;

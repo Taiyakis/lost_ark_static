@@ -25,19 +25,33 @@
 </div>
 
 <div class="filters-container">
-    <span class="filter-button" (click)="onRosterFilterChange('Highest')"
-        [ngClass]="{ 'active-button': 'Highest' == currentRosterFilter }">Highest</span>
-    <span class="filter-button" (click)="onRosterFilterChange('Average')"
-        [ngClass]="{ 'active-button': 'Average' == currentRosterFilter }">Average</span>
-    <span class="filter-button" (click)="onRosterFilterChange('Lowest')"
-        [ngClass]="{ 'active-button': 'Lowest' == currentRosterFilter }">Lowest</span>
+    <div class="filter-box">
+        <span class="filter-button" (click)="onRosterFilterChanged('HighestCombatPower')" np
+            [ngClass]="{ 'combatpower-button-color': 'HighestCombatPower' == currentRosterFilter }">Highest</span>
+        <span class="filter-button" (click)="onRosterFilterChanged('AverageCombatPower')"
+            [ngClass]="{ 'combatpower-button-color': 'AverageCombatPower' == currentRosterFilter }">Average</span>
+        <span class="filter-button" (click)="onRosterFilterChanged('LowestCombatPower')"
+            [ngClass]="{ 'combatpower-button-color': 'LowestCombatPower' == currentRosterFilter }">Lowest</span>
+    </div>
+
+    <div class="filter-box">
+        <span class="filter-button" (click)="onRosterFilterChanged('HighestLevel')"
+            [ngClass]="{ 'level-button-color': 'HighestLevel' == currentRosterFilter }">Highest</span>
+        <span class="filter-button" (click)="onRosterFilterChanged('AverageLevel')"
+            [ngClass]="{ 'level-button-color': 'AverageLevel' == currentRosterFilter }">Average</span>
+        <span class="filter-button" (click)="onRosterFilterChanged('LowestLevel')"
+            [ngClass]="{ 'level-button-color': 'LowestLevel' == currentRosterFilter }">Lowest</span>
+    </div>
 </div>
 
 <div class="container">
     <div class="roster-container" *ngFor="let name of rosterNames">
         <div class="roster-header" [ngStyle]="{ 'background-image': 'url(' + banner[name] + ')' }">
             <h1>{{ name }}</h1>
-            <span class="average-level">{{averageRosterLevel[name]}}</span>
+            <div class="roster-header-avarages">
+                <span class="average-level">{{averageRosterLevel[name]}}</span>
+                <span class="average-combat-power">{{averageRosterCombatPower[name]}}</span>
+            </div>
         </div>
         <div class="roster">
             <ng-container *ngFor="let character of groupedData[name]" class="character">
