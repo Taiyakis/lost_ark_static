@@ -234,16 +234,26 @@ a {
     padding: 0 8px 0 4px;
 }
 
-.active-button {
+.level-button-color {
     background-color: rgb(67 109 3) !important;
 }
 
+.combatpower-button-color {
+    background-color: rgb(109, 28, 3) !important;
+}
+
 .filters-container {
+    margin: auto;
     padding-top: 16px;
     display: flex;
     max-width: 1200px;
-    margin: auto;
+    gap: 10px;
     justify-content: flex-end;
+}
+
+.filter-box {
+    display: flex;
+    max-width: 1200px;
 }
 
 .filter-button {
@@ -267,12 +277,24 @@ a {
     border-radius: 0 16px 16px 0;
 }
 
+.roster-header-avarages {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 .average-level {
     background-color: rgb(67 109 3);
     border-radius: 16px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    padding: 6px;
+}
+
+.average-combat-power {
+    background-color: rgb(109, 28, 3);
+    border-radius: 16px;
     padding: 6px;
 }
 

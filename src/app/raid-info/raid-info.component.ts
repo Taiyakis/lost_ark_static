@@ -33,7 +33,6 @@ export class RaidInfoComponent implements OnInit {
 
   generateColumns(count: number) {
     this.raids.forEach((raid) => {
-      console.error(!!raid.hideRaid)
       for (let index = 0; index <= count; index++) {
         raid.values.push({ dps: 0, supp: 0, dpsNames: [''], suppNames: [''] })
       }
