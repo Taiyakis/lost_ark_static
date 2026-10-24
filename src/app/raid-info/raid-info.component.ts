@@ -48,12 +48,30 @@ export class RaidInfoComponent implements OnInit {
       for (let k = 0; k < groupByRosterName[rosterName].length; k++) {
         const char = groupByRosterName[rosterName][k];
         this.initializeCharacterRaidCount(char)
-        this.updateCathedralRunCount(0, i, char)
-        this.updateSerkaRunCount(3, i, char)
-        this.updateKazerosRunCount(6, i, char)
-        this.updateAct4RunCount(8, i, char)
-        this.updateMordumRunCount(10, i, char)
+        this.updateBelgardinRunCount(0, i, char)
+        this.updateCathedralRunCount(3, i, char)
+        this.updateSerkaRunCount(6, i, char)
+        this.updateKazerosRunCount(9, i, char)
       }
+    }
+  }
+
+  updateBelgardinRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
+    switch (true) {
+      case char.Level >= 1780:
+        // NM
+        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
+        break;
+      case char.Level >= 1770:
+        // HM
+        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
+        break;
+      case char.Level >= 1750:
+        // NM
+        this.increamentRoleByClassName(rowIndex + 2, indexToUpdate, char)
+        break;
+      default:
+        break;
     }
   }
 
@@ -104,32 +122,6 @@ export class RaidInfoComponent implements OnInit {
       case char.Level >= 1710:
         // NM
         this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-        break;
-      default:
-        break;
-    }
-  }
-
-  updateAct4RunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
-    switch (true) {
-      case char.Level >= 1720:
-        // HM
-        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
-        break;
-      case char.Level >= 1700:
-        // NM
-        this.increamentRoleByClassName(rowIndex + 1, indexToUpdate, char)
-        break;
-      default:
-        break;
-    }
-  }
-
-  updateMordumRunCount(rowIndex: number, indexToUpdate: number, char: ApiResponse) {
-    switch (true) {
-      case char.Level >= 1700:
-        // HM
-        this.increamentRoleByClassName(rowIndex, indexToUpdate, char)
         break;
       default:
         break;
