@@ -5,6 +5,21 @@ var APP_CONFIG = {
     },
     raids: [
         {
+            name: "Belgardin 💀",
+            raidLevelRequirement: 1780,
+            values: [],
+        },
+        {
+            name: "Belgardin HM",
+            raidLevelRequirement: 1770,
+            values: [],
+        },
+        {
+            name: "Belgardin NM",
+            raidLevelRequirement: 1750,
+            values: [],
+        },
+        {
             name: "Cathedral 💀",
             raidLevelRequirement: 1750,
             values: [],
@@ -44,23 +59,6 @@ var APP_CONFIG = {
             name: "Kazeros NM",
             raidLevelRequirement: 1710,
             values: [],
-        },
-        {
-            name: "Act 4 HM",
-            raidLevelRequirement: 1720,
-            values: [],
-        },
-        {
-
-            name: "Act 4 NM",
-            raidLevelRequirement: 1700,
-            values: [],
-        },
-        {
-
-            name: "Mordum HM",
-            raidLevelRequirement: 1700,
-            values: [],
-        },
+        }
     ]
 }
